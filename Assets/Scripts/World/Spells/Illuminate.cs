@@ -56,12 +56,13 @@ public class IlluminateSpell : Spell
 
         var res = (ApplyIlluminateSpellResponse)response;
         Cell cell = sm.privateGrid.GetCellAt(res.coord);
-        if (cell.building)
-        {
-            // TODO: Destroy the building as gameObject
-            // cell.building.gameObject.Destroy();
-        }
-        cell.CreateAndSetBuilding(res.building);
+        //if (cell.building)
+        //{
+        //    // TODO: Destroy the building as gameObject
+        //    // cell.building.gameObject.Destroy();
+        //}
+
+        sm.SetBuildingOnCell(cell, res.building);
 
         if (!animate) return;
 

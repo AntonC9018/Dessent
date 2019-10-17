@@ -3,7 +3,9 @@ public class BuildingTile : SelectableActionTile
 {
     //public BuffSpell buff;
     public Building building;
-    public GameObject fakeBuildingPrefab;
+    public GameObject ghost;
+
+
     public override void ApplyAction(Cell cell)
     {
         // TODO: Add construct building request
@@ -36,17 +38,21 @@ public class BuildingTile : SelectableActionTile
 
     public override void OnMouseEnterOnCell(Cell cell)
     {
+        Debug.Log("Enter");
         if (cell.building == null)
-            stateManager.instantiator.InstantiateBuildingOnCell<FakeBuilding>(cell, fakeBuildingPrefab);
+        {
+            stateManager.instantiator.TeleportObjectToCell(cell, ghost);
+        }
     }
 
     public override void OnMouseExitOnCell(Cell cell)
     {
-        //if (cell.building.)
+        ghost.SetActive(false);
     }
 
     public override void CancelAction()
     {
-        //throw new System.NotImplementedException();
+        stateManager.ResetSelectedAction();
+        ghost.SetActive(false);
     }
 }

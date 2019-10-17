@@ -1,10 +1,10 @@
 ﻿
 public enum BuildingName
 {
-    Hut,
-    Stable,
-    Monastery,
-    Beacon,
+    Hut = 0,
+    Stable = 1,
+    Monastery = 2,
+    Beacon = 3,
 }
 
 

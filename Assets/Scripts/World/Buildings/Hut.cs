@@ -10,7 +10,7 @@ public class Hut : Building
 
     void Start()
     {
-        type = BuildingName.Stable;
+        type = BuildingName.Hut;
     }
 
     public override int GetMana()

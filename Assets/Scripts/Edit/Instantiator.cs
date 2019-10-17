@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class Instantiator : MonoBehaviour
 {
 
-    public GameObject cellPref, voidPref, seaPref, earthPref, mountainPref;
+    public GameObject voidPref, seaPref, earthPref, mountainPref;
     public GameObject goldenPref, redPref, manaPref, bluePref;
     public GameObject
-        
+
         // spells
         illuminatePref,
         floodPref,
@@ -29,11 +29,18 @@ public class Instantiator : MonoBehaviour
         hutPref,
         stablePref,
         beaconPref,
-        monasteryPref;
+        monasteryPref,
 
+        // ghost buildings
+        ghostHutPref,
+        ghostStablePref,
+        ghostMonasteryPref,
+        ghostBeaconPref;
+
+    public GameObject[] ghostBuildings;
 
     public float offsetPercX = 0.05f;
-    public float objectOffset = 0.6f;
+    public float objectOffset = -0.3f;
     public float sizeScale;
     //public float objectShrinkageFactor = 0.8f;
 
@@ -54,6 +61,7 @@ public class Instantiator : MonoBehaviour
     public void CreateSinglePlayerGameScene()
     {
         DeleteDeleteme();
+        ghostBuildings = new GameObject[4];
 
         var gmobj = new GameObject();
         gmobj.transform.position = new Vector3(0, 0, 0);
@@ -61,6 +69,8 @@ public class Instantiator : MonoBehaviour
         gmobj.name = "SinglePlayer GameManager";
         gmobj.tag = "DELETEME";        
         var gm = gmobj.AddComponent<SinglePlayerGameManager>();
+
+        InitializeGhostBuildings(gmobj);
 
         for (int i = 0; i < 2; i++)
         {
@@ -136,11 +146,13 @@ public class Instantiator : MonoBehaviour
                 sm.buffTiles.Add(buffSpellTile);
                 buffSpellTile.stateManager = sm;
             }
-
+            int k = 0;
             foreach (var buildingTile in grid.ui.GetComponentsInChildren<BuildingTile>())
             {
                 sm.buildingTiles.Add(buildingTile);
                 buildingTile.stateManager = sm;
+                // do this regardless of the order that they appear
+                buildingTile.ghost = ghostBuildings[k++];
             }
 
             // TODO: implement next turn tile
@@ -154,8 +166,10 @@ public class Instantiator : MonoBehaviour
     {
         var toDelete = GameObject.FindGameObjectsWithTag("DELETEME");
         foreach (var d in toDelete)
+        {
             UnityEditor.EditorApplication.delayCall += () =>
                 DestroyImmediate(d);
+        }
     }
 
 
@@ -168,7 +182,7 @@ public class Instantiator : MonoBehaviour
         left.transform.localPosition = new Vector3(-8, 0, 0);
         left.transform.localScale = new Vector3(1, 1, 1);
         left.name = "Left Grid";
-        PopulateBoard(left, cellPref, voidPref);
+        PopulateBoard(left, voidPref);
 
         // Set up the RIGHT BOARD
         var right = new GameObject();
@@ -176,7 +190,7 @@ public class Instantiator : MonoBehaviour
         right.transform.localPosition = new Vector3(8, 0, 0);
         right.transform.localScale = new Vector3(1, 1, 1);
         right.name = "Right Grid";
-        PopulateBoard(right, cellPref, voidPref);
+        PopulateBoard(right, voidPref);
 
         // Set up UI tiles
         var ui = new GameObject();
@@ -204,8 +218,8 @@ public class Instantiator : MonoBehaviour
         tiles.Add( Gold()                               );
         tiles.Add( Gold<Hut>      (hutPref)             );
         tiles.Add( Gold<Stable>   (stablePref)          );
-        tiles.Add( Gold<Beacon>   (beaconPref)          );
         tiles.Add( Gold<Monastery>(monasteryPref)       );
+        tiles.Add( Gold<Beacon>   (beaconPref)          );
 
         PopulateUI(ui, tiles);
 
@@ -219,7 +233,7 @@ public class Instantiator : MonoBehaviour
     }
 
     private void PopulateBoard
-        (GameObject container, GameObject cellPref, GameObject cellFilling)
+        (GameObject container, GameObject cellFilling)
     {
         var cells = new List<Cell>();
         var t = Instantiate(cellFilling);
@@ -241,7 +255,7 @@ public class Instantiator : MonoBehaviour
             for (int x = -xrange; x <= xrange; x += 2)
             {
                 // Setup, move, rescale
-                var cell = Instantiate(cellPref);
+                var cell = new GameObject();
                 cell.transform.SetParent(container.transform);
                 cell.transform.localPosition = new Vector3(x, y + y * yGapScaling, y);
                 // Rename
@@ -337,7 +351,7 @@ public class Instantiator : MonoBehaviour
 
 
 
-    public void CreateBuildingOnCellByType(Cell cell, BuildingName buildingName)
+    public void SpawnBuildingOnCellByType(Cell cell, BuildingName buildingName)
     {
         if (buildingName == BuildingName.Hut)
         {
@@ -359,38 +373,47 @@ public class Instantiator : MonoBehaviour
         cell.building.gameObject.name = buildingName.ToString();
     }
 
-    // This can be use for Hut, Stable, Monastery, Beacon and 
-    // on any other buildings that might be added in future
-    public T InstantiateBuildingOnCell<T>(Cell cell, GameObject pref)
-        where T : Building
+    public void ResizeObject(GameObject obj)
     {
-
-        var instance = Instantiate(pref);
-        // save the localPosition in a variable as we need to 
-        // keep the relative offset of the building
-        Vector3 localPos = instance.transform.localPosition;
-
-        // the new object remains at place, so need to shift it back
-        instance.transform.SetParent(cell.gameObject.transform);
-
         // move the object back and shift it up a little
-        instance.transform.localPosition = new Vector3(
-            localPos.x,
-            localPos.y + objectOffset,
+        obj.transform.localPosition = new Vector3(
+            obj.transform.localPosition.x,
+            obj.transform.localPosition.y + objectOffset,
             -2 // keep it in front
             );
 
         // rescale it so that it is the same size as the cell
-        instance.transform.localScale = new Vector3(
-            instance.transform.localScale.x * sizeScale,
-            instance.transform.localScale.y * sizeScale,
+        obj.transform.localScale = new Vector3(
+            obj.transform.localScale.x * sizeScale,
+            obj.transform.localScale.y * sizeScale,
             1);
+    }
 
+
+    public GameObject InstantiateObjectOnCell(Cell cell, GameObject pref)
+    {
+        var instance = Instantiate(pref);
+
+        // the new object remains at place, so need to shift it back
+        instance.transform.SetParent(cell.gameObject.transform, false);
+
+        ResizeObject(instance);
+
+        return instance;
+    }
+
+    // This can be used for Hut, Stable, Monastery, Beacon and 
+    // on any other buildings that might be added in future
+    public T InstantiateBuildingOnCell<T>(Cell cell, GameObject pref)
+        where T : Building
+    {
+        var instance = InstantiateObjectOnCell(cell, pref);
         // return the Building instance
         return instance.AddComponent<T>();
     }
 
 
+    // TODO: refactor ColliderTest. It should not be called so at least
     public void ResetHoverOnCell(Cell cell)
     {
         var colliderTest = cell.GetComponent<ColliderTest>();
@@ -398,7 +421,46 @@ public class Instantiator : MonoBehaviour
         colliderTest.AutoHover();
     }
 
+    // Instantiate and resize ghost prefs
+    private void InitializeGhostBuildings(GameObject container)
+    {
 
+        ghostBuildings[(int)BuildingName.Hut] = 
+            Instantiate(ghostHutPref);
+
+        ghostBuildings[(int)BuildingName.Stable] = 
+            Instantiate(ghostStablePref);
+
+        ghostBuildings[(int)BuildingName.Monastery] = 
+            Instantiate(ghostMonasteryPref);
+
+        ghostBuildings[(int)BuildingName.Beacon] = 
+            Instantiate(ghostBeaconPref);
+
+        foreach (var buil in ghostBuildings)
+        {
+            buil.transform.SetParent(container.transform);
+            ResizeObject(buil);
+            buil.SetActive(false);
+        }
+    }
+
+    public void TeleportGhostBuildingToCellByType(Cell cell, BuildingName buildingName)
+    {
+        TeleportObjectToCell(cell, ghostBuildings[(int)buildingName]);
+    }
+
+    public void TeleportObjectToCell(Cell cell, GameObject obj)
+    {
+        obj.SetActive(true);
+        // the new object remains at place, so need to shift it back
+        obj.transform.SetParent(cell.gameObject.transform, false);
+    }
+
+    public void HideObject(GameObject obj)
+    {
+        obj.SetActive(false);
+    }
 
 
 
@@ -427,19 +489,26 @@ public class Instantiator : MonoBehaviour
                 // reposition, rescale
                 tile.transform.SetParent(container.transform);
                 tile.transform.localPosition = new Vector3(x, y + y * yGapScaling, y);
-                tile.transform.localScale = new Vector3(sizeScale, sizeScale, 1);
+                tile.transform.localScale = new Vector3(1, 1, 1);
 
                 // rename
                 RenameTileAndChildren(tile);
 
-                // Add the collider
-                var polcol = tile.AddComponent<PolygonCollider2D>();
-                // Set it up
-                SetupPolCol(polcol);
+                if (tile.transform.childCount > 0)
+                {
+                    var child = tile.transform.GetChild(0).gameObject;
+                        
+                    child.transform.localScale = new Vector3(sizeScale, sizeScale, 1);
 
-                // Uncomment this for debugging
-                // TODO: rename
-                tile.AddComponent<ColliderTest>();
+                    // Add the collider
+                    var polcol = tile.AddComponent<PolygonCollider2D>();
+                    // Set it up
+                    SetupPolCol(polcol);
+
+                    // Uncomment this for debugging
+                    // TODO: rename
+                    tile.AddComponent<ColliderTest>();
+                }
             }
         }
     }
@@ -462,7 +531,7 @@ public class Instantiator : MonoBehaviour
         }
         else
         {
-            tile.gameObject.name = $"Tile";
+            tile.gameObject.name = "Tile";
         }
     }
 

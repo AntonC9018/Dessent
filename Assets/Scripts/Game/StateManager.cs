@@ -23,7 +23,7 @@ public class StateManager : MonoBehaviour
     public WhichPlayer whichPlayer;
 
     public int turn = 0;
-    public GamePhase phase = GamePhase.Terraforming;
+    public GamePhase phase = GamePhase.Building;
 
     public Instantiator instantiator;
     
@@ -31,6 +31,7 @@ public class StateManager : MonoBehaviour
     {
         mana = new Mana();
         mana.gameState = this;
+        selectedAction.cells = new List<Cell>();
     }
 
     // Method that hands the request to GameManager
@@ -70,7 +71,8 @@ public class StateManager : MonoBehaviour
                 {
                     var res = (ConstructBuildingResponse)response;
                     Cell cell = publicGrid.GetCellAt(res.coord);
-                    cell.CreateAndSetBuilding(new BuildingStruct { type = res.type });
+                    instantiator.SpawnBuildingOnCellByType(cell, res.type);
+                    //cell.CreateAndSetBuilding(new BuildingStruct { type = res.type });
                     break;
                 }
 
@@ -114,6 +116,21 @@ public class StateManager : MonoBehaviour
                 // TODO: Add receiving of packets for all buffs
                 // and spells
         }
+    }
+
+
+    public void SetBuildingOnCell(Cell cell, BuildingStruct building)
+    {
+        if (cell.building.type != building.type)
+        {
+            Destroy(cell.building.gameObject);
+        }
+        instantiator.SpawnBuildingOnCellByType(cell, building.type);
+
+        cell.building.type = building.type;
+        cell.building.religion = building.religion != 0 ? building.religion : 4;
+        cell.building.activeState = building.activeState;
+        cell.building.level = building.level != 0 ? building.level : 1;
     }
 
 
@@ -279,7 +296,7 @@ public class StateManager : MonoBehaviour
         // ignore the event if the right mouse button has been clicked
         // or is being held down
         if (IsIgnoring(cell)) return;
-        
+
         // NOTE: I'm not sure whether we should check it all over the place
         // so for now I'm going to omit this check in future methods
         if (phase == GamePhase.Terraforming)
@@ -298,35 +315,35 @@ public class StateManager : MonoBehaviour
             if (cell.building != null)
             {
                 // show an arrow over the building
-                var arrow = Instantiate(
-                    cell.upgradeArrowPref,
-                    cell.transform,
-                    false);
+                //var arrow = Instantiate(
+                //    cell.upgradeArrowPref,
+                //    cell.transform,
+                //    false);
 
-                arrow
-                    .GetComponent<OnClickCollider>()
-                    .AddListener(() =>
-                    {
-                        // make sure the building is still there
-                        if (!cell.building) return;
+                //arrow
+                //    .GetComponent<OnClickCollider>()
+                //    .AddListener(() =>
+                //    {
+                //        // make sure the building is still there
+                //        if (!cell.building) return;
 
-                        if (
-                            // make sure max level not reached
-                            cell.building.CanUpgrade() &&
-                            // make sure there is enough mana
-                            mana.currentMana >= cell.building.GetUpgradeManaCost()
-                        )
-                        {
-                            // send the request to GM
-                            Request(
-                                new UpgradeBuildingRequest
-                                {
-                                    coord = cell.gridPos,
-                                    currentLevel = cell.building.level,
-                                });
-                        }
-                    });
-                cell.popups.Add(arrow);
+                //        if (
+                //            // make sure max level not reached
+                //            cell.building.CanUpgrade() &&
+                //            // make sure there is enough mana
+                //            mana.currentMana >= cell.building.GetUpgradeManaCost()
+                //        )
+                //        {
+                //            // send the request to GM
+                //            Request(
+                //                new UpgradeBuildingRequest
+                //                {
+                //                    coord = cell.gridPos,
+                //                    currentLevel = cell.building.level,
+                //                });
+                //        }
+                //    });
+                //cell.popups.Add(arrow);
             }
         }
         ResetLastActiveCell(cell);

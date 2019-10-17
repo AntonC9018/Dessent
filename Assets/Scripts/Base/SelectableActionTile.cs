@@ -17,18 +17,17 @@ public abstract class SelectableActionTile : MonoBehaviour
         stateManager.selectedAction.tile = this;
         stateManager.selectedAction.set = true;
         ActivateCursor();
+        Debug.Log("Hello");
     }
 
     public virtual void ActivateCursor()
     {
         Cursor.SetCursor(specialCursor, hotspot, cursorMode);
-        print(specialCursor);
     }
 
     public virtual void DeactivateCursor()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        print("reset cursor");
     }
 
     // It is optional to override these methods. 

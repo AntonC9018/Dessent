@@ -1,12 +1,12 @@
 ﻿public class BuffSpellTile : SelectableActionTile
 {
-    public BuffSpell buff;
+    public BuffSpell buffSpell;
 
     public override void ApplyAction(Cell cell)
     {        
-        if (stateManager.mana.currentMana >= buff.manacost)
+        if (stateManager.mana.currentMana >= buffSpell.manacost)
         {
-            buff.Request(cell, stateManager);
+            buffSpell.Request(cell, stateManager);
         }
         else
         {

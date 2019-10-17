@@ -57,5 +57,7 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+# Add more stuff here
 .collabignore
 .vscode

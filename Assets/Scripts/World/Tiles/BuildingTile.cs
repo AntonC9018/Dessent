@@ -37,12 +37,12 @@ public class BuildingTile : SelectableActionTile
     public override void OnMouseEnterOnCell(Cell cell)
     {
         if (cell.building == null)
-            stateManager.createGrid.InstantiateBuildingOnCell<FakeBuilding>(cell, fakeBuildingPrefab);
+            stateManager.instantiator.InstantiateBuildingOnCell<FakeBuilding>(cell, fakeBuildingPrefab);
     }
 
     public override void OnMouseExitOnCell(Cell cell)
     {
-        if (cell.building.)
+        //if (cell.building.)
     }
 
     public override void CancelAction()

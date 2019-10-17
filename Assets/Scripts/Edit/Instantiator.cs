@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text.RegularExpressions;
 using UnityEngine.UI;
 
-public class CreateGrid : MonoBehaviour
+public class Instantiator : MonoBehaviour
 {
 
     public GameObject cellPref, voidPref, seaPref, earthPref, mountainPref;
@@ -53,7 +54,6 @@ public class CreateGrid : MonoBehaviour
     public void CreateSinglePlayerGameScene()
     {
         DeleteDeleteme();
-        CalculatePrefSizeScales();
 
         var gmobj = new GameObject();
         gmobj.transform.position = new Vector3(0, 0, 0);
@@ -80,7 +80,7 @@ public class CreateGrid : MonoBehaviour
             
             var sm = smobj.AddComponent<StateManager>();
             sm.gameManager = gm;
-            sm.createGrid = this;
+            sm.instantiator = this;
             gm.stateManagers[i] = sm;
             sm.whichPlayer = (WhichPlayer)i;
 
@@ -88,12 +88,14 @@ public class CreateGrid : MonoBehaviour
             PrivateGrid prig;
             var grid = CreateAGrid(smobj);            
             if (i == 0)
-            {                
+            {  
+                // Left player
                 pubg = grid.left.AddComponent<PublicGrid>();                
                 prig = grid.right.AddComponent<PrivateGrid>();
             }
             else
             {                
+                // Right player
                 prig = grid.left.AddComponent<PrivateGrid>();                
                 pubg = grid.right.AddComponent<PublicGrid>();
             }
@@ -147,6 +149,7 @@ public class CreateGrid : MonoBehaviour
     }
 
     [ContextMenu("Delete DELETEME")]
+    // Destroy all objects in scene
     public void DeleteDeleteme()
     {
         var toDelete = GameObject.FindGameObjectsWithTag("DELETEME");
@@ -159,24 +162,24 @@ public class CreateGrid : MonoBehaviour
     private GridStruct CreateAGrid(GameObject holder)
     {
         
+        // Set up the LEFT BOARD
         var left = new GameObject();
-        left.tag = "DELETEME";
         left.transform.SetParent(holder.transform);
         left.transform.localPosition = new Vector3(-8, 0, 0);
         left.transform.localScale = new Vector3(1, 1, 1);
         left.name = "Left Grid";
         PopulateBoard(left, cellPref, voidPref);
 
+        // Set up the RIGHT BOARD
         var right = new GameObject();
-        right.tag = "DELETEME";
         right.transform.SetParent(holder.transform);
         right.transform.localPosition = new Vector3(8, 0, 0);
         right.transform.localScale = new Vector3(1, 1, 1);
         right.name = "Right Grid";
         PopulateBoard(right, cellPref, voidPref);
 
+        // Set up UI tiles
         var ui = new GameObject();
-        ui.tag = "DELETEME";
         ui.transform.SetParent(holder.transform);
         ui.transform.localPosition = new Vector3(0, 0, 0);
         ui.transform.localScale = new Vector3(1, 1, 1);
@@ -215,10 +218,8 @@ public class CreateGrid : MonoBehaviour
         };
     }
 
-    private void PopulateBoard(
-        GameObject container, 
-        GameObject cellPref, 
-        GameObject cellFilling)
+    private void PopulateBoard
+        (GameObject container, GameObject cellPref, GameObject cellFilling)
     {
         var cells = new List<Cell>();
         var t = Instantiate(cellFilling);
@@ -226,26 +227,34 @@ public class CreateGrid : MonoBehaviour
         UnityEditor.EditorApplication.delayCall += () =>
                 DestroyImmediate(t);
 
-        float yGapScaling = - size.y / size.x * 2 * offsetPercX;
+        float yGapScaling = -size.y / size.x * 2 * offsetPercX;
+
+        // modify the global sizeScale as this value will be used later
         sizeScale = 1.0f / size.x * (1.0f - offsetPercX) * 2.0f;
 
-        int abs(int n) => n < 0 ? -n : n;
-        
+        // define a quick absolute value expression
+        int abs(int n) => n < 0 ? -n : n;        
 
         for (int y = 6; y >= -6; y -= 2)
         {
             int xrange = 6 - abs(y) / 2;
             for (int x = -xrange; x <= xrange; x += 2)
             {
+                // Setup, move, rescale
                 var cell = Instantiate(cellPref);
                 cell.transform.SetParent(container.transform);
                 cell.transform.localPosition = new Vector3(x, y + y * yGapScaling, y);
-                cell.name = $"Cell at x = {x}, y = {y}";
+                // Rename
+                cell.name = $"Cell at {x}, {y}";
 
-                Cell cellScript = cell.GetComponent<Cell>();
+                // Setup components
+                Cell cellScript = cell.AddComponent<Cell>();
+                cellScript.gridPos = new Vector2Int(x, y);
                 cellScript.ground =
                     InstantiateGroundOnCell(cellScript, cellFilling);
 
+                // -----------------------------------------------------
+                // DEBUGGING ZONE
                 if (x < -4)
                 {
                     cellScript.building = 
@@ -254,12 +263,12 @@ public class CreateGrid : MonoBehaviour
                 else if (x < -2)
                 {
                     cellScript.building =
-                        InstantiateBuildingOnCell<Hut>(cellScript, stablePref);
+                        InstantiateBuildingOnCell<Stable>(cellScript, stablePref);
                 }
                 else if (x < 2)
                 {
                     cellScript.building =
-                        InstantiateBuildingOnCell<Hut>(cellScript, monasteryPref);
+                        InstantiateBuildingOnCell<Monastery>(cellScript, monasteryPref);
                 }
                 //else
                 //{
@@ -272,120 +281,60 @@ public class CreateGrid : MonoBehaviour
                     cellScript.building.gameObject.name = "HELLO";
 
                 }
-
-                cellScript.gridPos = new Vector2Int(x, y);
-                
+                // DEBUGGING ZONE ENDED
+                // --------------------------------------------------------
+                                
+                // Add and set up collider script
                 var polcol = cell.AddComponent<PolygonCollider2D>();
                 SetupPolCol(polcol);
+
+                // Uncomment for debugging
+                // TODO: rename
                 cell.AddComponent<ColliderTest>();
             }
         }
     }
 
-
-    public float earthPrefSizeScale, seaPrefSizeScale, mountainPrefSizeScale, voidPrefSizeScale;
-
-    private void CalculatePrefSizeScales()
-    {
-        float calcSize(GameObject e) =>
-            (1.0f - offsetPercX) * 2.0f /
-            e.GetComponent<Renderer>().bounds.size.x;                 
-
-        GameObject e0 = Instantiate(earthPref);
-        earthPrefSizeScale = calcSize(e0);
-        GameObject e1 = Instantiate(seaPref);
-        seaPrefSizeScale = calcSize(e1);
-        GameObject e2 = Instantiate(mountainPref);
-        mountainPrefSizeScale = calcSize(e2);
-        GameObject e3 = Instantiate(voidPref);
-        voidPrefSizeScale = calcSize(e3);
-
-        UnityEditor.EditorApplication.delayCall += () =>
-        {
-            DestroyImmediate(e0);
-            DestroyImmediate(e1);
-            DestroyImmediate(e2);
-            DestroyImmediate(e3);
-        };
-    }
-
     public void LoopGroundOnCellByAltitude(Cell cell, GroundName groundName)
     {
-        GroundName newtype;
 
         // Void, Sea -> Grassland
         if (groundName == GroundName.Void || groundName == GroundName.Sea)
         {
-            cell.ground = 
-                InstantiateGroundOnCell(cell, earthPref);
-            newtype = GroundName.Grassland;
+            cell.ground = InstantiateGroundOnCell(cell, earthPref);
+            cell.ground.altitude = GroundName.Grassland;
         }
+
         // Mountain -> Sea
         else if (groundName == GroundName.Mountain)
         {
-            cell.ground = 
-                InstantiateGroundOnCell(cell, seaPref);
-            newtype = GroundName.Sea;
+            cell.ground = InstantiateGroundOnCell(cell, seaPref);
+            cell.ground.altitude = GroundName.Sea;
         }
+
         // Grassland -> Mountain
         //else if (groundName == GroundName.Grassland)
         else
         {
-           cell.ground = 
-                InstantiateGroundOnCell(cell, mountainPref);
-            newtype = GroundName.Mountain;
+            cell.ground =  InstantiateGroundOnCell(cell, mountainPref);
+            cell.ground.altitude = GroundName.Mountain;
         }
 
-        cell.ground.altitude = newtype;
-        cell.ground.gameObject.name = newtype.ToString();
+        // rename the object in the editor
+        cell.ground.gameObject.name = cell.ground.altitude.ToString();
     }
 
-    public Ground InstantiateGroundOnCell(
-        Cell cell, 
-        GameObject pref)         
+    public Ground InstantiateGroundOnCell(Cell cell, GameObject pref)
     {
-        float calcSize(GameObject e) =>
-            (1.0f - offsetPercX) * 2.0f /
-            e.GetComponent<Renderer>().bounds.size.x;
-
         var instance = Instantiate(pref, cell.transform, false);
-        var sizeScale = calcSize(instance);
         instance.transform.localScale = new Vector3(
             sizeScale * instance.transform.localScale.x,
             sizeScale * instance.transform.localScale.y,
             1);
+        // return the Ground instance
         return instance.AddComponent<Ground>();
     }
 
-
-    public T InstantiateBuildingOnCell<T>(
-        Cell cell,
-        GameObject pref) //cell.transform.scale.x
-        where T : Building
-    {
-
-        var instance = Instantiate(pref);
-        Vector3 localPos = instance.transform.localPosition;
-        Debug.Log(localPos);
-        instance.transform.SetParent(cell.gameObject.transform);
-        instance.transform.localPosition = new Vector3(
-            localPos.x,
-            localPos.y + objectOffset,
-            -2
-            );
-        instance.transform.localScale = new Vector3(
-            instance.transform.localScale.x * sizeScale,
-            instance.transform.localScale.y * sizeScale,
-            1);
-        return instance.AddComponent<T>();
-    }
-
-    public void ResetHoverOnCell(Cell cell)
-    {
-        var colliderTest = cell.GetComponent<ColliderTest>();
-        colliderTest.chang = cell.ground.GetComponent<SpriteRenderer>();
-        colliderTest.AutoHover();
-    }
 
 
     public void CreateBuildingOnCellByType(Cell cell, BuildingName buildingName)
@@ -408,20 +357,63 @@ public class CreateGrid : MonoBehaviour
         }
 
         cell.building.gameObject.name = buildingName.ToString();
-
     }
+
+    // This can be use for Hut, Stable, Monastery, Beacon and 
+    // on any other buildings that might be added in future
+    public T InstantiateBuildingOnCell<T>(Cell cell, GameObject pref)
+        where T : Building
+    {
+
+        var instance = Instantiate(pref);
+        // save the localPosition in a variable as we need to 
+        // keep the relative offset of the building
+        Vector3 localPos = instance.transform.localPosition;
+
+        // the new object remains at place, so need to shift it back
+        instance.transform.SetParent(cell.gameObject.transform);
+
+        // move the object back and shift it up a little
+        instance.transform.localPosition = new Vector3(
+            localPos.x,
+            localPos.y + objectOffset,
+            -2 // keep it in front
+            );
+
+        // rescale it so that it is the same size as the cell
+        instance.transform.localScale = new Vector3(
+            instance.transform.localScale.x * sizeScale,
+            instance.transform.localScale.y * sizeScale,
+            1);
+
+        // return the Building instance
+        return instance.AddComponent<T>();
+    }
+
+
+    public void ResetHoverOnCell(Cell cell)
+    {
+        var colliderTest = cell.GetComponent<ColliderTest>();
+        colliderTest.chang = cell.ground.GetComponent<SpriteRenderer>();
+        colliderTest.AutoHover();
+    }
+
+
 
 
 
     private void PopulateUI(GameObject container, List<GameObject> tiles)
     {
+        // we assume all tile sprites are of same size
         var size = tiles[0].transform.GetChild(0).GetComponent<Renderer>().bounds.size;
         int i = 0;
 
-        float offsetPercX = 0.05f;
+        // we need to recalculate this as the sprites for 
+        // golden and mana tiles are not the same (in fact, they're smaller)
         float yGapScaling = -size.y / size.x * 2.0f * offsetPercX;
         float sizeScale = 1.0f / size.x * (1.0f - offsetPercX) * 2.0f;
 
+        // define a quick absolute value for integers
         int abs(int n) => n < 0 ? -n : n;
 
         for (int y = 6; y >= -6; y -= 2)
@@ -429,91 +421,130 @@ public class CreateGrid : MonoBehaviour
             int xrange = abs(y) / 2;
             for (int x = -xrange; x <= xrange; x += 2)
             {
-                var tile = tiles[i];
+                // get the non-positioned tile
+                var tile = tiles[i++];
+
+                // reposition, rescale
                 tile.transform.SetParent(container.transform);
                 tile.transform.localPosition = new Vector3(x, y + y * yGapScaling, y);
-                tile.transform.localScale = new Vector3(1, 1, 1);
+                tile.transform.localScale = new Vector3(sizeScale, sizeScale, 1);
 
-                if (tile.transform.childCount > 0)
-                {
-                    var cell = tile.transform.GetChild(0);
-                    cell.localScale = new Vector3(sizeScale, sizeScale, 1);
+                // rename
+                RenameTileAndChildren(tile);
 
-                    if (cell.childCount > 0)
-                    {
-                        var child = cell.GetChild(0);
-                        child.SetParent(cell);
-                        child.localPosition =
-                            new Vector3(
-                                child.localPosition.x,
-                                child.localPosition.y,
-                                -1);
-                        tile.gameObject.name = child.name.Substring(0, child.name.Length - 7);
-                    }
-                    cell.gameObject.name = "Cell";
-                }
-                else
-                {
-                    tile.gameObject.name = $"Tile at x = {x}, y = {y}";
-                }
-
-                i++;
-
-                tile.AddComponent<PolygonCollider2D>();
-                var polcol = tile.GetComponent<PolygonCollider2D>();
+                // Add the collider
+                var polcol = tile.AddComponent<PolygonCollider2D>();
+                // Set it up
                 SetupPolCol(polcol);
+
+                // Uncomment this for debugging
+                // TODO: rename
                 tile.AddComponent<ColliderTest>();
             }
         }
     }
 
-    private GameObject Red<T>(GameObject obj) where T : Spell, new()
+    private void RenameTileAndChildren(GameObject tile)
     {
+        if (tile.transform.childCount > 0)
+        {
+            var cell = tile.transform.GetChild(0);
+
+            if (cell.childCount > 0)
+            {
+                var child = cell.GetChild(0);
+                tile.gameObject.name =
+                    // remove the " (Copy)" at the end
+                    child.name.Substring(0, child.name.Length - 7);
+            }
+            // rename the cell to "Cell"
+            cell.gameObject.name = "Cell";
+        }
+        else
+        {
+            tile.gameObject.name = $"Tile";
+        }
+    }
+
+    // IMPORTANT: The following methods do not reposition 
+    // the elements they create, they just set them up.
+    // Repositioning is done in PopulateUI()
+    private GameObject Red<T>(GameObject obj) 
+        where T : Spell, new()
+    {
+        // Tile (SpellTile) {  RedCell (basically an image)  }
         var cell = Instantiate(redPref);
         var tile = InstantiateAndSetParentAndWrap(obj, cell);
-        tile.AddComponent<SpellTile>();
-        var script = tile.GetComponent<SpellTile>();
-        script.spell = new T();
+
+        // Make the tile a SpellTile
+        tile.AddComponent<SpellTile>()
+            // + add the Spell on it
+            .spell = new T();
+
+        // return the container object
         return tile;
     }
 
-    private GameObject Blue<T>(GameObject obj) where T : BuffSpell, new()
+    private GameObject Blue<T>(GameObject obj) 
+        where T : BuffSpell, new()
     {
+        // Tile (BuffSpellTile) {  BlueCell (basically an image)  }
         var cell = Instantiate(bluePref);
         var tile = InstantiateAndSetParentAndWrap(obj, cell);
-        tile.AddComponent<BuffSpellTile>();
-        var script = tile.GetComponent<BuffSpellTile>();
-        script.buff = new T();
+
+        // Make the tile a BuffSpellTile
+        tile.AddComponent<BuffSpellTile>()
+            // + add the BuffSpell on it
+            .buffSpell = new T();
+
+        // return the container object
         return tile;
     }
 
-
-    private GameObject Gold<T>(GameObject obj) where T : Building
+    private GameObject Gold<T>(GameObject obj)
+        where T : Building
     {
+        // Tile (BuildingTile) {  GoldenCell {  Building  }  }
         var cell = Instantiate(goldenPref);
         var tile = InstantiateAndSetParentAndWrap(obj, cell);
-        tile.AddComponent<BuildingTile>();
+
         var buil = cell.transform.GetChild(0).gameObject;
-        buil.AddComponent<T>();
-        tile.GetComponent<BuildingTile>().building = buil.GetComponent<T>();
+        // Make the container a BuildingTile 
+        tile.AddComponent<BuildingTile>()
+            // + make the building a Building
+            .building = buil.AddComponent<T>();
+        
+        // return the container object
         return tile;
     }
 
     private GameObject Gold()
     {
+        // Tile {  Cell (without script)  }
         var cell = Instantiate(goldenPref);
         var tile = new GameObject();
         cell.transform.SetParent(tile.transform);
         return tile;
     }
 
-    private GameObject InstantiateAndSetParentAndWrap(GameObject pref, GameObject parent)
+    // A helper methot to reduce a bunch of code
+    private GameObject InstantiateAndSetParentAndWrap
+        (GameObject pref, GameObject parent)
     {
         var cont = new GameObject();
+
+        // wrap the parent in container
         parent.transform.SetParent(cont.transform);
         parent.transform.localPosition = new Vector3(0, 0, -1);
+
+        // wrap the prefab in parent
         var instance = Instantiate(pref);
         instance.transform.SetParent(parent.transform);
+        instance.transform.localPosition = new Vector3(
+            instance.transform.localPosition.x,
+            instance.transform.localPosition.y, 
+            -2);
+
         return cont;
     }
 
@@ -526,6 +557,7 @@ public class CreateGrid : MonoBehaviour
     }
 
 
+    // Use the hardcoded Path coordinates to set up collider on cells
     private void SetupPolCol(PolygonCollider2D polcol)
     {
         polcol.pathCount = 1;

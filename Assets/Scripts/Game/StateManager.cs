@@ -25,7 +25,7 @@ public class StateManager : MonoBehaviour
     public int turn = 0;
     public GamePhase phase = GamePhase.Terraforming;
 
-    public CreateGrid createGrid;
+    public Instantiator instantiator;
     
     void Start()
     {
@@ -267,8 +267,8 @@ public class StateManager : MonoBehaviour
         if (cell.parentGrid.IsPublic() && !cell.isChanged)
         {
             Destroy(cell.ground.gameObject);
-            createGrid.LoopGroundOnCellByAltitude(cell, cell.ground.altitude);
-            createGrid.ResetHoverOnCell(cell);
+            instantiator.LoopGroundOnCellByAltitude(cell, cell.ground.altitude);
+            instantiator.ResetHoverOnCell(cell);
             cell.isChanged = true;
         }
     }
@@ -445,9 +445,9 @@ public class StateManager : MonoBehaviour
     {
         foreach (BuffSpellTile tile in buffTiles)
         {
-            if (tile.buff.type == name)
+            if (tile.buffSpell.type == name)
             {
-                return tile.buff;
+                return tile.buffSpell;
             }
         }
         return null;

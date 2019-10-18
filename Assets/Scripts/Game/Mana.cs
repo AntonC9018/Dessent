@@ -18,7 +18,8 @@ public class Mana : MonoBehaviour
         // let them all produce their mana
         foreach (Cell cell in gameState.publicGrid.cells)
         {
-            mana += cell.building.GetMana();
+            if (cell.building)
+                mana += cell.building.GetMana();
         }
 
         // calculate how much mana the player
@@ -26,7 +27,8 @@ public class Mana : MonoBehaviour
         // (assume they are iluminated by default)
         foreach (Cell cell in gameState.privateGrid.cells)
         {
-            mana += cell.building.GetMana();
+            if (cell.building)
+                mana += cell.building.GetMana();
         }
 
         currentMana += mana;        
@@ -40,7 +42,8 @@ public class Mana : MonoBehaviour
         // calculate how much mana they are going to produce
         foreach (Cell cell in gameState.publicGrid.cells)
         {
-            mps += cell.building.GetMPS();
+            if (cell.building)
+                mps += cell.building.GetMPS();
         }
 
         // calculate how much mana the player
@@ -48,7 +51,8 @@ public class Mana : MonoBehaviour
         // (assume they are iluminated by default)
         foreach (Cell cell in gameState.privateGrid.cells)
         {
-            mps += cell.building.GetMPS();
+            if (cell.building)
+                mps += cell.building.GetMPS();
         }
 
         this.mps = mps;
@@ -62,7 +66,8 @@ public class Mana : MonoBehaviour
         // let them all produce their mana
         foreach (Cell cell in gameState.publicGrid.cells)
         {
-            maxMana += cell.building.GetManaCapacity();
+            if (cell.building)
+                maxMana += cell.building.GetManaCapacity();
         }
 
         // calculate how much mana the player
@@ -70,7 +75,8 @@ public class Mana : MonoBehaviour
         // (assume they are iluminated by default)
         foreach (Cell cell in gameState.privateGrid.cells)
         {
-            maxMana += cell.building.GetManaCapacity();
+            if (cell.building)
+                maxMana += cell.building.GetManaCapacity();
         }
 
         this.maxMana = maxMana;

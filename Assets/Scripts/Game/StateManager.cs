@@ -23,6 +23,7 @@ public class StateManager : MonoBehaviour
     public WhichPlayer whichPlayer;
 
     public int turn = 0;
+    public TurnPhase turnPhase = TurnPhase.Start;
     public GamePhase phase = GamePhase.Building;
 
     public Instantiator instantiator;
@@ -72,6 +73,9 @@ public class StateManager : MonoBehaviour
                     var res = (ConstructBuildingResponse)response;
                     Cell cell = publicGrid.GetCellAt(res.coord);
                     instantiator.SpawnBuildingOnCellByType(cell, res.type);
+                    mana.UseMana(cell.building.GetBuildManaCost());
+                    mana.UpdateMana(turnPhase);
+                    cell.building.UpdateBuildingManaCost();
                     break;
                 }
 
@@ -127,9 +131,10 @@ public class StateManager : MonoBehaviour
         instantiator.SpawnBuildingOnCellByType(cell, building.type);
 
         cell.building.type = building.type;
-        cell.building.religion = building.religion != 0 ? building.religion : 4;
+        cell.building.hp = building.hp != 0 ? building.hp : cell.building.hp;
+        cell.building.religion = building.religion != 0 ? building.religion : cell.building.religion;
         cell.building.activeState = building.activeState;
-        cell.building.level = building.level != 0 ? building.level : 1;
+        cell.building.level = building.level != 0 ? building.level : cell.building.level;
     }
 
 

@@ -20,6 +20,7 @@ public class Beacon : Building
     void Start()
     {
         type = BuildingName.Beacon;
+        allowedGroundType = GroundName.Sea;
     }
 
     public void PrepareNextVec()

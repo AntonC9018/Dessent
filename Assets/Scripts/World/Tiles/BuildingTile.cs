@@ -5,26 +5,31 @@ public class BuildingTile : SelectableActionTile
     public Building building;
     public GameObject ghost;
 
-
     public override void ApplyAction(Cell cell)
     {
-        // TODO: Add construct building request
-        // for now, just create the building
-        // TODO: figure manacosts
+
         if (cell.building)
         {
+            Debug.Log("Building already exists");
+            // Building already exists
             // TODO: Display an error to the player
         }
-        else if (building.allowedGroundType == cell.ground.altitude)
+
+        else if (building.allowedGroundType != cell.ground.altitude)
         {
-            // TODO: display an error
-        }
-        else if (stateManager.mana.currentMana < building.GetBuildManaCost())
-        {
+            Debug.Log($"Not right type of ground. Expected {building.allowedGroundType.ToString()}, got {cell.ground.altitude.ToString()}");
+            // Ground type not allowed check
             // TODO: Display an error
         }
-        // Can build
+
+        else if (stateManager.mana.currentMana < building.GetBuildManaCost())
+        {
+            Debug.Log("Not enough mana");
+            // Low mana
+            // TODO: Display an error
+        }
         else {
+            // Can build
             var req = new ConstructBuildingRequest
             {
                 coord = cell.gridPos,
@@ -32,8 +37,7 @@ public class BuildingTile : SelectableActionTile
             };
 
             stateManager.Request(req);
-
-            CancelAction();
+            ghost.SetActive(false);
         }
     }
 

@@ -48,6 +48,12 @@ public abstract class Building : MonoBehaviour
         return 0;
     }
 
+    // TODO: implement and perhaps move?
+    public void UpdateBuildingManaCost()
+    {
+
+    }
+
     public bool CanUpgrade()
     {
         if (level < maxLevel)

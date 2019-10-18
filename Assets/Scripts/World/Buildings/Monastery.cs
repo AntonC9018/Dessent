@@ -10,6 +10,7 @@ public class Monastery : Building
     void Start()
     {
         type = BuildingName.Monastery;
+        allowedGroundType = GroundName.Mountain;
     }
 
     public override int GetMaxSpells()

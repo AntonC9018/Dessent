@@ -15,6 +15,7 @@ public class Stable : Building
 
     void Start() {
         type = BuildingName.Stable;
+        allowedGroundType = GroundName.Grassland;
         capacity = 1;
     }
 

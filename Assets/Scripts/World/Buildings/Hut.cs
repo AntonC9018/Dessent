@@ -11,6 +11,7 @@ public class Hut : Building
     void Start()
     {
         type = BuildingName.Hut;
+        allowedGroundType = GroundName.Grassland;
     }
 
     public override int GetMana()

@@ -5,8 +5,14 @@ using UnityEngine;
 public class SinglePlayerGameManager : GameManager
 {
     public StateManager[] stateManagers = new StateManager[2];
+    private StateManager activePlayer;
 
     private int turnCount = 0;
+
+    void Start()
+    {
+        activePlayer = stateManagers[0];
+    }
 
     override public StateManager GetOpponent(StateManager s)
     {
@@ -21,6 +27,11 @@ public class SinglePlayerGameManager : GameManager
 
     override public void Request(StateManager from, Request request)
     {
+
+        // Ignore requests that do not come from 
+        // the currently active player
+        if (from != activePlayer) return;
+
         // redirect the request to the opponent
         StateManager opponent = GetOpponent(from);
 
@@ -137,10 +148,13 @@ public class SinglePlayerGameManager : GameManager
     private void NextTurn()
     {
         turnCount += 1;
-        //if (turnCount > 30)
-        //{
-        //    phase
-        //}
+        // pass the turn
+        activePlayer = GetOpponent(activePlayer);
+        // move to the second player's board
+        Camera.main.transform.position = new Vector3(
+            activePlayer.transform.position.x,
+            activePlayer.transform.position.y,
+            Camera.main.transform.position.z);
     }
 
 }

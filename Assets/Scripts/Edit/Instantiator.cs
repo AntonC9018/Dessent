@@ -155,6 +155,8 @@ public class Instantiator : MonoBehaviour
                 buildingTile.ghost = ghostBuildings[k++];
             }
 
+            grid.ui.GetComponentInChildren<NextTurnTile>().stateManager = sm;
+
             // TODO: implement next turn tile
 
         }
@@ -212,7 +214,7 @@ public class Instantiator : MonoBehaviour
         tiles.Add( Blue<Shield>         (shieldPref)    );
         tiles.Add( ManaTile()                           );
         tiles.Add( Gold()                               );
-        tiles.Add( Gold()                               );
+        tiles.Add( _NextTurnTile()                      );
         tiles.Add( Gold()                               );
         tiles.Add( Gold()                               );
         tiles.Add( Gold()                               );
@@ -269,32 +271,32 @@ public class Instantiator : MonoBehaviour
 
                 // -----------------------------------------------------
                 // DEBUGGING ZONE
-                if (x < -4)
-                {
-                    cellScript.building = 
-                        InstantiateBuildingOnCell<Hut>(cellScript, hutPref);
-                }
-                else if (x < -2)
-                {
-                    cellScript.building =
-                        InstantiateBuildingOnCell<Stable>(cellScript, stablePref);
-                }
-                else if (x < 2)
-                {
-                    cellScript.building =
-                        InstantiateBuildingOnCell<Monastery>(cellScript, monasteryPref);
-                }
-                //else
+                //if (x < -4)
+                //{
+                //    cellScript.building = 
+                //        InstantiateBuildingOnCell<Hut>(cellScript, hutPref);
+                //}
+                //else if (x < -2)
                 //{
                 //    cellScript.building =
-                //        InstantiateBuildingOnCell<Hut>(cellScript, beaconPref, sizeScale);
+                //        InstantiateBuildingOnCell<Stable>(cellScript, stablePref);
                 //}
+                //else if (x < 2)
+                //{
+                //    cellScript.building =
+                //        InstantiateBuildingOnCell<Monastery>(cellScript, monasteryPref);
+                //}
+                ////else
+                ////{
+                ////    cellScript.building =
+                ////        InstantiateBuildingOnCell<Hut>(cellScript, beaconPref, sizeScale);
+                ////}
 
-                if (cellScript.building)
-                {
-                    cellScript.building.gameObject.name = "HELLO";
+                //if (cellScript.building)
+                //{
+                //    cellScript.building.gameObject.name = "HELLO";
 
-                }
+                //}
                 // DEBUGGING ZONE ENDED
                 // --------------------------------------------------------
                                 
@@ -622,6 +624,15 @@ public class Instantiator : MonoBehaviour
         var cell = Instantiate(manaPref);
         var tile = new GameObject();
         cell.transform.SetParent(tile.transform);
+        return tile;
+    }
+
+    private GameObject _NextTurnTile()
+    {
+        var tile = Gold();
+        var nextTurn = new GameObject();
+        tile.AddComponent<NextTurnTile>();
+        nextTurn.transform.SetParent(tile.transform.GetChild(0));
         return tile;
     }
 

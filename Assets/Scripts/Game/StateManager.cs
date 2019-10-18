@@ -24,14 +24,14 @@ public class StateManager : MonoBehaviour
 
     public int turn = 0;
     public TurnPhase turnPhase = TurnPhase.Start;
-    public GamePhase phase = GamePhase.Building;
+    public GamePhase phase = GamePhase.Terraforming;
 
     public Instantiator instantiator;
     
     void Start()
     {
         mana = new Mana();
-        mana.gameState = this;
+        mana.stateManager = this;
         selectedAction.cells = new List<Cell>();
     }
 
@@ -63,7 +63,7 @@ public class StateManager : MonoBehaviour
                 {
                     var res = (ApplyBuffResponse)response;
                     var buff = FindBuff(res.name);
-                    buff.RealizeResponse(res, this, false);
+                    buff.RealizeResponse(res, this, true);
                     break;
                 }
 
@@ -71,18 +71,25 @@ public class StateManager : MonoBehaviour
             case HeaderName.ConstructBuilding:
                 {
                     var res = (ConstructBuildingResponse)response;
+                    // Find the relevant cell
                     Cell cell = publicGrid.GetCellAt(res.coord);
+                    // Instantiate building with script
                     instantiator.SpawnBuildingOnCellByType(cell, res.type);
+                    // Spend mana
                     mana.UseMana(cell.building.GetBuildManaCost());
-                    mana.UpdateMana(turnPhase);
+                    // Update mana stats like mps and max mana
+                    mana.UpdateMana();
                     cell.building.UpdateBuildingManaCost();
                     break;
                 }
 
+            // response to the end turn request initiated by the player
             case HeaderName.EndTurn:
                 {
                     var res = (EndTurnResponse)response;
                     turn = res.turnCount;
+                    SyncGamePhase();
+                    OnEndOfTurn();
                     break;
                 }
             // TODO: add more cases in a similar way
@@ -102,11 +109,16 @@ public class StateManager : MonoBehaviour
     {
         switch (packet.headerName)
         {
+
+            // This happens only when a player runs out of time
+            // and their turn ends forcefully
             case HeaderName.EndTurn:
                 {
                     // TODO: Timeout animation
                     var pack = (EndTurnPacket)packet;
                     turn = pack.turnCount;
+                    SyncGamePhase();
+                    OnEndOfTurn();
                     break;
                 }
 
@@ -114,6 +126,8 @@ public class StateManager : MonoBehaviour
                 {
                     var pack = (StartTurnPacket)packet;
                     turn = pack.turnCount;
+                    SyncGamePhase();
+                    OnStartOfTurn();
                     break;
                 }
                 // TODO: Add receiving of packets for all buffs
@@ -135,6 +149,32 @@ public class StateManager : MonoBehaviour
         cell.building.religion = building.religion != 0 ? building.religion : cell.building.religion;
         cell.building.activeState = building.activeState;
         cell.building.level = building.level != 0 ? building.level : cell.building.level;
+    }
+
+
+
+    private void OnEndOfTurn()
+    {
+        turnPhase = TurnPhase.End;
+        mana.UpdateMana();
+
+        // Add more logic here
+        // ...
+        // ...
+
+        turnPhase = TurnPhase.Opponent;
+    }
+
+    private void OnStartOfTurn()
+    {
+        turnPhase = TurnPhase.Start;
+        mana.UpdateMana();
+
+        // Add more logic here
+        // ...
+        // ...
+
+        turnPhase = TurnPhase.You;
     }
 
 
@@ -177,6 +217,17 @@ public class StateManager : MonoBehaviour
     private Cell ignoredCell;
     private bool rightReleased;
 
+
+    public void SetSelectedAction(SelectableActionTile tile)
+    {
+        if (selectedAction.set)
+        {
+            selectedAction.tile.OnActionCanceled();
+            ResetSelectedAction();
+        }
+        selectedAction.tile = tile;
+        selectedAction.set = true;
+    }
 
 
     public void ResetSelectedAction()
@@ -476,9 +527,9 @@ public class StateManager : MonoBehaviour
 
     public void SyncGamePhase()
     {
-        if (turn > 0 && turn <= 15)
+        if (turn > 1 && turn <= 30)
             phase = GamePhase.Building;
-        else if (turn > 15)
+        else if (turn > 30)
             phase = GamePhase.Apocalypse;
     }
 }

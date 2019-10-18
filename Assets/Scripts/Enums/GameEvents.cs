@@ -1,10 +1,9 @@
 ﻿public enum TurnPhase
 {
-    Prestart,
-    Start,
-    Middle,
-    Preend,
-    End,
+    Start,      // Translation Opponent -> You
+    You,        // The actual turn (one can use spells etc)
+    End,        // Translation You -> Opponent
+    Opponent,   // The opponent's You
 }
 
 public enum GamePhase

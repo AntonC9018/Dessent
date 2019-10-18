@@ -12,13 +12,13 @@ public abstract class SelectableActionTile : MonoBehaviour
     public CursorMode cursorMode = CursorMode.Auto;
     public GameObject actionPrefab;
 
-    public virtual void OnMouseUp()
+    public virtual void OnMouseButtonUp()
     {
-        stateManager.selectedAction.tile = this;
-        stateManager.selectedAction.set = true;
+        stateManager.SetSelectedAction(this);
         ActivateCursor();
-        Debug.Log("Hello");
     }
+
+    public virtual void OnMouseButtonDown() {}
 
     public virtual void ActivateCursor()
     {
@@ -50,6 +50,35 @@ public abstract class SelectableActionTile : MonoBehaviour
         DeactivateCursor();
     }
 
-    public abstract void ApplyAction(Cell cell);
+    public virtual void ApplyAction(Cell cell) {}
     public abstract void CancelAction();
+
+
+    // Events of this
+    private bool mouseOver;
+
+    void Update()
+    {
+        if (mouseOver)
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                OnMouseButtonUp();
+            }
+            else if (Input.GetMouseButtonDown(0))
+            {
+                OnMouseButtonDown();
+            }
+        }
+    }
+
+    public void OnMouseEnter()
+    {
+        mouseOver = true;
+    }
+
+    public void OnMouseExit()
+    {
+        mouseOver = false;
+    }
 }

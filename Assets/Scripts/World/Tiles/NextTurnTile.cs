@@ -1,13 +1,9 @@
 ﻿public class NextTurnTile : SelectableActionTile
 {
-    //public BuffSpell buff;
-
-
-    // TODO: Add EndTurn request instead
-    public override void ApplyAction(Cell cell)
+    public override void OnMouseButtonUp()
     {
-
         stateManager.Request(new EndTurnRequest());
+        stateManager.ResetSelectedAction();
     }
 
     public override void CancelAction()

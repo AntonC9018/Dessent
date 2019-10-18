@@ -41,30 +41,9 @@ public abstract class Building : MonoBehaviour
 
     public Cell parentCell;
 
-
-    public static Building Create(BuildingStruct b)
+    public bool GetBuildManaCost()
     {
-        Building buil;
-
-        if (b.type == BuildingName.Beacon)
-            buil = new Beacon();
-        else if (b.type == BuildingName.Hut)
-            buil = new Hut();
-        else if (b.type == BuildingName.Monastery)
-            buil = new Monastery();
-        else if (b.type == BuildingName.Stable)
-            buil = new Stable();
-        else
-            // placeholder to evade errors
-            buil = new Hut();
-
-        buil.hp = b.hp;
-        buil.type = b.type;
-        buil.religion = b.religion;
-        buil.activeState = b.activeState;
-        buil.level = b.level;
-
-        return buil;
+        return 0;
     }
 
     public bool CanUpgrade()

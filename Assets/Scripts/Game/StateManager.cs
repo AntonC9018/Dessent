@@ -72,7 +72,6 @@ public class StateManager : MonoBehaviour
                     var res = (ConstructBuildingResponse)response;
                     Cell cell = publicGrid.GetCellAt(res.coord);
                     instantiator.SpawnBuildingOnCellByType(cell, res.type);
-                    //cell.CreateAndSetBuilding(new BuildingStruct { type = res.type });
                     break;
                 }
 

@@ -20,12 +20,13 @@ public class BuildingTile : SelectableActionTile
         {
             var req = new ConstructBuildingRequest
             {
-                type = building.type
+                coord = cell.gridPos,
+                type = building.type,
             };
 
             stateManager.Request(req);
-            //cell.CreateAndSetBuilding(new BuildingStruct { type = type });
 
+            CancelAction();
         }
         else
         {
@@ -38,7 +39,6 @@ public class BuildingTile : SelectableActionTile
 
     public override void OnMouseEnterOnCell(Cell cell)
     {
-        Debug.Log("Enter");
         if (cell.building == null)
         {
             stateManager.instantiator.TeleportObjectToCell(cell, ghost);
@@ -48,6 +48,12 @@ public class BuildingTile : SelectableActionTile
     public override void OnMouseExitOnCell(Cell cell)
     {
         ghost.SetActive(false);
+    }
+
+    public override void OnMouseButtonDownOnCell(Cell cell)
+    {
+        //ghost.SetActive(false);
+        ApplyAction(cell);
     }
 
     public override void CancelAction()

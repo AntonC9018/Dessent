@@ -41,7 +41,9 @@ public abstract class Building : MonoBehaviour
 
     public Cell parentCell;
 
-    public bool GetBuildManaCost()
+
+    // TODO: Move this up
+    public int GetBuildManaCost()
     {
         return 0;
     }

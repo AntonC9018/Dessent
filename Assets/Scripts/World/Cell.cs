@@ -167,12 +167,6 @@ public class Cell : MonoBehaviour
         }
     }
 
-    public void CreateAndSetBuilding(BuildingStruct b)
-    {
-        building = Building.Create(b);
-    }
-
-
     // TODO: Centralize
     public void OnMouseEnter()
     {

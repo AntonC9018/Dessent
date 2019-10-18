@@ -15,9 +15,16 @@ public class BuildingTile : SelectableActionTile
         {
             // TODO: Display an error to the player
         }
-        else if (stateManager.mana.currentMana >= 0 // cell.GetBuildingCost(type)
-            && Building.IsAllowedBuildingOnCell(building.type, cell))
+        else if (building.allowedGroundType == cell.ground.altitude)
         {
+            // TODO: display an error
+        }
+        else if (stateManager.mana.currentMana < building.GetBuildManaCost())
+        {
+            // TODO: Display an error
+        }
+        // Can build
+        else {
             var req = new ConstructBuildingRequest
             {
                 coord = cell.gridPos,
@@ -27,13 +34,6 @@ public class BuildingTile : SelectableActionTile
             stateManager.Request(req);
 
             CancelAction();
-        }
-        else
-        {
-            // TODO: Display to the user some message with an error
-            // BTW, onButtonClick is overridable too, so
-            // you could add some manarelated error checking there
-            // to not even let the user select a spell when mana is low
         }
     }
 

@@ -32,26 +32,13 @@ public class Cell : MonoBehaviour
         return true;
     }
 
-
-    // use whichever one is more convenient
-    public Cell(Vector2Int pos, HexGrid parent)
-    {
-        gridPos = pos;
-        parentGrid = parent;
-    } 
-    public Cell(Vector3 pos, HexGrid parent)
-    {
-        gridPos = new Vector2Int((int)pos.x, (int)pos.y);
-        parentGrid = parent;
-    }
-
     // the cell should keep buffs but lose bonuses
     // i.e. the two cells should exchange bonuses
     public void MoveTo(Vector2Int destination)
     {
         gridPos = destination;
 
-        // TODO: change world position stateManageroothly through some other logic
+        // TODO: change world position stateManager smoothly through some other logic
     }
 
 
@@ -136,18 +123,6 @@ public class Cell : MonoBehaviour
         return result;
     }
 
-
-    public void ChangeGround(Ground ground)
-    {
-        this.ground = ground;
-        // TODO: call an animation 
-        // TODO: update buildings
-    }
-
-    public void UpgradeBuilding()
-    {
-        building.Upgrade();
-    }
 
     private bool mouseOver = false;
 

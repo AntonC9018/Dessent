@@ -37,7 +37,8 @@ public class Instantiator : MonoBehaviour
         ghostMonasteryPref,
         ghostBeaconPref;
 
-    public GameObject[] ghostBuildings;
+    public IDictionary<BuildingName, GameObject> ghostBuildings 
+        = new Dictionary<BuildingName, GameObject>();
 
     public float offsetPercX = 0.05f;
     public float objectOffset = -0.3f;
@@ -54,14 +55,13 @@ public class Instantiator : MonoBehaviour
 
     private void Start()
     {
-        //CalculatePrefSizeScales();
+        CreateSinglePlayerGameScene();
     }
 
     [ContextMenu("CreateCellsAnton")]
     public void CreateSinglePlayerGameScene()
     {
         DeleteDeleteme();
-        ghostBuildings = new GameObject[4];
 
         var gmobj = new GameObject();
         gmobj.transform.position = new Vector3(0, 0, 0);
@@ -139,25 +139,26 @@ public class Instantiator : MonoBehaviour
             {
                 sm.spellTiles.Add(spellTile);
                 spellTile.stateManager = sm;
+                sm.spells.Add(spellTile.spell.type, spellTile.spell);
             }
 
             foreach (var buffSpellTile in grid.ui.GetComponentsInChildren<BuffSpellTile>())
             {
                 sm.buffTiles.Add(buffSpellTile);
                 buffSpellTile.stateManager = sm;
+                sm.buffSpells.Add(buffSpellTile.buffSpell.type, buffSpellTile.buffSpell);
             }
-            int k = 0;
+
             foreach (var buildingTile in grid.ui.GetComponentsInChildren<BuildingTile>())
             {
                 sm.buildingTiles.Add(buildingTile);
                 buildingTile.stateManager = sm;
-                // do this regardless of the order that they appear
-                buildingTile.ghost = ghostBuildings[k++];
+                buildingTile.ghost = ghostBuildings[buildingTile.building.type];
+                sm.buildingCount.Add(buildingTile.building.type, 0);
+                buildingTile.building.stateManager = sm;
             }
 
             grid.ui.GetComponentInChildren<NextTurnTile>().stateManager = sm;
-
-            // TODO: implement next turn tile
 
         }
     }
@@ -373,6 +374,8 @@ public class Instantiator : MonoBehaviour
         }
 
         cell.building.gameObject.name = buildingName.ToString();
+        cell.building.parentCell = cell;
+        cell.building.stateManager = cell.stateManager;
     }
 
     public void ResizeObject(GameObject obj)
@@ -426,20 +429,13 @@ public class Instantiator : MonoBehaviour
     // Instantiate and resize ghost prefs
     private void InitializeGhostBuildings(GameObject container)
     {
+        ghostBuildings.Clear();
+        ghostBuildings.Add(BuildingName.Hut, Instantiate(ghostHutPref));
+        ghostBuildings.Add(BuildingName.Stable, Instantiate(ghostStablePref));
+        ghostBuildings.Add(BuildingName.Monastery, Instantiate(ghostMonasteryPref));
+        ghostBuildings.Add(BuildingName.Beacon, Instantiate(ghostBeaconPref));
 
-        ghostBuildings[(int)BuildingName.Hut] = 
-            Instantiate(ghostHutPref);
-
-        ghostBuildings[(int)BuildingName.Stable] = 
-            Instantiate(ghostStablePref);
-
-        ghostBuildings[(int)BuildingName.Monastery] = 
-            Instantiate(ghostMonasteryPref);
-
-        ghostBuildings[(int)BuildingName.Beacon] = 
-            Instantiate(ghostBeaconPref);
-
-        foreach (var buil in ghostBuildings)
+        foreach (var buil in ghostBuildings.Values)
         {
             buil.transform.SetParent(container.transform);
             ResizeObject(buil);
@@ -449,7 +445,7 @@ public class Instantiator : MonoBehaviour
 
     public void TeleportGhostBuildingToCellByType(Cell cell, BuildingName buildingName)
     {
-        TeleportObjectToCell(cell, ghostBuildings[(int)buildingName]);
+        TeleportObjectToCell(cell, ghostBuildings[buildingName]);
     }
 
     public void TeleportObjectToCell(Cell cell, GameObject obj)

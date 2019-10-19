@@ -8,6 +8,7 @@ public class BuildingTile : SelectableActionTile
     public override void ApplyAction(Cell cell)
     {
 
+
         if (cell.building)
         {
             Debug.Log("Building already exists");
@@ -39,6 +40,8 @@ public class BuildingTile : SelectableActionTile
             stateManager.Request(req);
             ghost.SetActive(false);
         }
+
+        print($"Building has level: {cell.building.level}");
     }
 
     public override void OnMouseEnterOnCell(Cell cell)

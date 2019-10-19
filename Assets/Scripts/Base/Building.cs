@@ -19,40 +19,65 @@ public struct BuildingStruct
 public abstract class Building : MonoBehaviour
 {
 
-    public BuildingName type;
+    public abstract BuildingName type
+    {
+        get;
+    }
+
+    // Health 
     public int hp = 1;
     public int lastDamage = 0;
+
+    // Religion
+    // TODO: Implement religion logic. Right now it is completely ignored
     public int religion = 4;
     public bool owner = true;
 
-    public static int buyCost = 1;
-    public static int upgradeCost = 1;
+    // Building
+    public static int initialBuildCost = 1;
+    public static int buildIncrement = 1;
+    public abstract GroundName allowedGroundType
+    {
+        get;
+    }
 
-    // upgradeIncrement * level + upgradeCost
-    public static int upgradeIncrement = 1; 
+    public int GetBuildManaCost()
+    {
+        return initialBuildCost + buildIncrement * stateManager.buildingCount[type];
+    }
+
+
+    // Upgrading
+    public static int initialUpgradeCost = 1;
+    public static int upgradeIncrement = 1;
+    public static int minLevel = 1;
+    public static int maxLevel = 4;
+    public int level = minLevel;
+
+    public int GetUpgradeManaCost()
+    {
+        return upgradeIncrement * level + initialUpgradeCost;
+    }
 
     public bool activeState = true;
 
-    public static int minLevel = 1;
-    public int level = minLevel;
-    public static int maxLevel = 4;
-
-    public GroundName allowedGroundType;
-
     public Cell parentCell;
+    public StateManager stateManager;
 
 
-    // TODO: Move this up
-    public int GetBuildManaCost()
+    // Mana + Spells amplification
+    public virtual int manaCapacity
     {
-        return 0;
-    }
-
-    // TODO: implement and perhaps move?
-    public void UpdateBuildingManaCost()
+        get;
+    } = 0;
+    public virtual int manaProduction
     {
-
-    }
+        get;
+    } = 0;
+    public virtual int spellCapacity
+    {
+        get;
+    } = 0;
 
     public bool CanUpgrade()
     {
@@ -91,33 +116,15 @@ public abstract class Building : MonoBehaviour
 
     public virtual void InfluenceReligion(ReligionSource source) {}
 
+    public virtual void Special() {}
+    public virtual void OnTurnStart() {}
+    public virtual void OnTurnEnd() {}
 
-    // the inherited class that is going to produce mana
-    // should override these functions to a one that sould take 
-    // in accound who is the owner of the building
-    public virtual int GetMPS() 
+    public int ProduceMana()
     {
-        return 0;
-    }
-    public virtual int GetMana()
-    {
-        return 0;
-    }
-
-    // this is for the buildings that produce mana
-    public virtual int GetManaCapacity() 
-    {
-        return 0;
-    }
-
-    public virtual int GetMaxSpells()
-    {
-        return 0;
-    }
-
-    public virtual void OnTurnPhaseChange(TurnPhase phase)
-    {
-        
+        var mana = manaProduction;
+        // TODO: remove buffs
+        return mana;
     }
 
     public virtual void Deactivate(int length)
@@ -126,27 +133,4 @@ public abstract class Building : MonoBehaviour
         activeState = false;
     }
 
-    public int GetUpgradeManaCost()
-    {
-        //var grid = parentCell.parentGrid;
-        //var count = grid.GetBuildingCountOfType(type);
-        return upgradeIncrement * level + upgradeCost;
-    }
-
-    public static bool IsAllowedBuildingOnCell(BuildingName type, Cell cell)
-    {
-        if (type == BuildingName.Hut || type == BuildingName.Stable)
-        {
-            if (cell.ground.altitude == GroundName.Grassland) return true;
-        }
-        else if (type == BuildingName.Beacon)
-        {
-            if (cell.ground.altitude == GroundName.Sea) return true;
-        }
-        else if (type == BuildingName.Monastery)
-        {
-            if (cell.ground.altitude == GroundName.Mountain) return true;
-        }
-        return false;
-    }
 }

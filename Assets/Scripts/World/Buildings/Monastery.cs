@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class Monastery : Building
 {
-    // TODO: Add animation / image to this object
-    public static int maxSpellsPerLevel = 1;
-
-    void Start()
+    public override BuildingName type
     {
-        type = BuildingName.Monastery;
-        allowedGroundType = GroundName.Mountain;
+        get { return BuildingName.Monastery; }
+    }
+    public override GroundName allowedGroundType
+    {
+        get { return GroundName.Mountain; }
     }
 
-    public override int GetMaxSpells()
+    private static int maxSpellsPerLevel = 1;
+
+    public override int spellCapacity
     {
-        return maxSpellsPerLevel * level;
+        get { return maxSpellsPerLevel * level; }
     }
 
 

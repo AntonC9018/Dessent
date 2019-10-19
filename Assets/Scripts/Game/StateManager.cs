@@ -17,6 +17,13 @@ public class StateManager : MonoBehaviour
     public NextTurnTile nextTurnTile;
     public List<BuildingTile> buildingTiles = new List<BuildingTile>();
 
+    public IDictionary<BuildingName, int> buildingCount
+        = new Dictionary<BuildingName, int>();
+    public IDictionary<SpellName, Spell> spells
+        = new Dictionary<SpellName, Spell>();
+    public IDictionary<BuffSpellName, BuffSpell> buffSpells
+        = new Dictionary<BuffSpellName, BuffSpell>();
+
     public GameManager gameManager;
     public Mana mana;
 
@@ -79,7 +86,8 @@ public class StateManager : MonoBehaviour
                     mana.UseMana(cell.building.GetBuildManaCost());
                     // Update mana stats like mps and max mana
                     mana.UpdateMana();
-                    cell.building.UpdateBuildingManaCost();
+                    // update count
+                    buildingCount[cell.building.type] += 1;
                     break;
                 }
 
@@ -144,7 +152,6 @@ public class StateManager : MonoBehaviour
         }
         instantiator.SpawnBuildingOnCellByType(cell, building.type);
 
-        cell.building.type = building.type;
         cell.building.hp = building.hp != 0 ? building.hp : cell.building.hp;
         cell.building.religion = building.religion != 0 ? building.religion : cell.building.religion;
         cell.building.activeState = building.activeState;

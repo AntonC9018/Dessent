@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Beacon : Building
 {
-    // TODO: Add animation / image to this object
-    public List<Cell> adjacentCells;
+    public override BuildingName type
+    {
+        get { return BuildingName.Beacon; }
+    }
+    public override GroundName allowedGroundType
+    {
+        get { return GroundName.Sea; }
+    }
+
     public List<Vector2Int> vecOrder = new List<Vector2Int>{
         new Vector2Int(2, 0),
         new Vector2Int(1, 1),
@@ -17,15 +24,9 @@ public class Beacon : Building
     public int currentVecIndex = 0;
     public Cell currentCell;
 
-    void Start()
-    {
-        type = BuildingName.Beacon;
-        allowedGroundType = GroundName.Sea;
-    }
-
     public void PrepareNextVec()
     {
-        var privateGrid = parentCell.parentGrid.stateManager.privateGrid;
+        var privateGrid = stateManager.privateGrid;
         Cell cell;
         do
         {
@@ -36,6 +37,7 @@ public class Beacon : Building
         currentCell = cell;
     }
 
+    // TODO: this should be a packet!
     public void IlluminateNext()
     {
         currentVecIndex++;
@@ -45,10 +47,11 @@ public class Beacon : Building
             coord = currentCell.gridPos,
         };
 
-        parentCell.parentGrid.stateManager.Request(req);
+        stateManager.Request(req);
     }
 
 
+    // TODO: This should be a packet!
     public void IlluminateThis()
     {
         var req = new ApplyIlluminateSpellRequest
@@ -56,21 +59,19 @@ public class Beacon : Building
             coord = parentCell.gridPos,
         };
 
-        parentCell.parentGrid.stateManager.Request(req);
+        stateManager.Request(req);
     }
 
-    public override void OnTurnPhaseChange(TurnPhase newPhase)
+    public override void OnTurnStart()
     {
-        if (newPhase == TurnPhase.Start)
-        {
-            IlluminateNext();
-            PrepareNextVec();
-            IlluminateThis();
-        }
-        else if (newPhase == TurnPhase.End)
-        {
-            IlluminateNext();
-            PrepareNextVec();
-        }
+        IlluminateNext();
+        PrepareNextVec();
+        IlluminateThis();
+    }
+
+    public override void OnTurnEnd()
+    {
+        IlluminateNext();
+        PrepareNextVec();
     }
 }

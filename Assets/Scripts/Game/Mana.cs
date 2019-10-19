@@ -6,8 +6,8 @@ public class Mana : MonoBehaviour
 {
     public StateManager stateManager;
     public int maxMana;
-    public int defaultMaxMana = 1;
-    public int currentMana = 0;
+    public int defaultMaxMana = 5;
+    public int currentMana = 5;
     public int mps; // mana per second
     public int defaultMPS;
 
@@ -19,7 +19,7 @@ public class Mana : MonoBehaviour
         foreach (Cell cell in stateManager.publicGrid.cells)
         {
             if (cell.building)
-                mana += cell.building.GetMana();
+                mana += cell.building.ProduceMana();
         }
 
         // calculate how much mana the player
@@ -28,7 +28,7 @@ public class Mana : MonoBehaviour
         foreach (Cell cell in stateManager.privateGrid.cells)
         {
             if (cell.building)
-                mana += cell.building.GetMana();
+                mana += cell.building.ProduceMana();
         }
 
         currentMana += mana;        
@@ -43,7 +43,7 @@ public class Mana : MonoBehaviour
         foreach (Cell cell in stateManager.publicGrid.cells)
         {
             if (cell.building)
-                mps += cell.building.GetMPS();
+                mps += cell.building.manaProduction;
         }
 
         // calculate how much mana the player
@@ -52,7 +52,7 @@ public class Mana : MonoBehaviour
         foreach (Cell cell in stateManager.privateGrid.cells)
         {
             if (cell.building)
-                mps += cell.building.GetMPS();
+                mps += cell.building.manaProduction;
         }
 
         this.mps = mps;
@@ -67,7 +67,7 @@ public class Mana : MonoBehaviour
         foreach (Cell cell in stateManager.publicGrid.cells)
         {
             if (cell.building)
-                maxMana += cell.building.GetManaCapacity();
+                maxMana += cell.building.manaCapacity;
         }
 
         // calculate how much mana the player
@@ -76,7 +76,7 @@ public class Mana : MonoBehaviour
         foreach (Cell cell in stateManager.privateGrid.cells)
         {
             if (cell.building)
-                maxMana += cell.building.GetManaCapacity();
+                maxMana += cell.building.manaCapacity;
         }
 
         this.maxMana = maxMana;
@@ -100,18 +100,35 @@ public class Mana : MonoBehaviour
     public void UpdateMana() {
         var phase = stateManager.turnPhase;
 
-        //if (phase == TurnPhase.You)
-        //{
-        //    RecalculateMPS();
-        //    RecalculateMaxMana();
-        //}
-        //else if (phase == TurnPhase.Start) {
-        //    RecalculateMPS();
-        //    GatherManaFromBuildings();
-        //}
-        //else if (phase == TurnPhase.End) {
-        //    RecalculateMaxMana();
-        //    LimitMana();
-        //}
+        if (phase == TurnPhase.You)
+        {
+            RecalculateMPS();
+            RecalculateMaxMana();
+            print("--------------------------");
+            print($"Current mana: {currentMana}");
+            print($"MPS: {mps}");
+            print("--------------------------");
+
+        }
+        else if (phase == TurnPhase.Start)
+        {
+            RecalculateMPS();
+            GatherManaFromBuildings();
+            print("--------------------------");
+            print($"Max mana: {maxMana}");
+            print($"Current mana: {currentMana}");
+            print($"MPS: {mps}");
+            print("--------------------------");
+
+        }
+        else if (phase == TurnPhase.End)
+        {
+            RecalculateMaxMana();
+            LimitMana();
+            print("--------------------------");
+            print($"Max mana: {maxMana}");
+            print("--------------------------");
+
+        }
     }
 }

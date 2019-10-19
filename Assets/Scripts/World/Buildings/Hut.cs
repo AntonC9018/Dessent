@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class Hut : Building
 {
-    // TODO: Add animation / image to this object
-
-    public static int manaPerLevel;
-
-    void Start()
+    public override BuildingName type
     {
-        type = BuildingName.Hut;
-        allowedGroundType = GroundName.Grassland;
+        get { return BuildingName.Hut; }
+    }
+    public override GroundName allowedGroundType
+    {
+        get { return GroundName.Grassland; }
     }
 
-    public override int GetMana()
+    private static int manaPerLevel = 1;
+    private static int baseManaProduction = 0;
+
+    public override int manaProduction
     {
-        return manaPerLevel * level;
+        get {
+            int result = level * manaPerLevel + baseManaProduction;
+            // TODO: increase if manaProduction amplification
+            return result;
+        }
     }
 
-    public override int GetMPS()
-    {
-        return manaPerLevel * level;
-    }
 
 }

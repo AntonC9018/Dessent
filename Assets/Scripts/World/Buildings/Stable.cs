@@ -4,29 +4,20 @@ using UnityEngine;
 
 public class Stable : Building
 {
-    // TODO: Add animation / image to this object
+    public override BuildingName type
+    {
+        get { return BuildingName.Stable; }
+    }
+    public override GroundName allowedGroundType
+    {
+        get { return GroundName.Grassland; }
+    }
+
     public static int capacityPerLevel = 1;
 
-    public int capacity
+    public override int manaCapacity
     {
-        get { return capacity; }
-        set { return; }
-    }
-
-    void Start() {
-        type = BuildingName.Stable;
-        allowedGroundType = GroundName.Grassland;
-        capacity = 1;
-    }
-
-    public override void Upgrade()
-    {
-        base.Upgrade();
-        this.capacity = capacityPerLevel * level;
-    }
-
-    public override int GetManaCapacity() {
-        return capacity;
+        get { return capacityPerLevel * level; }
     }
 
 }

@@ -15,7 +15,10 @@ public class Lightning : Spell
 
     public override void Request(Cell cell, StateManager sm)
     {
-        var req = new ApplyLightningSpellRequest();
+        var req = new ApplyLightningSpellRequest
+        {
+            coord = cell.gridPos,
+        };
         sm.Request(req);
     }
 

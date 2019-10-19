@@ -28,4 +28,6 @@
     // do something based on the response
     public abstract void RealizeResponse(Response response, StateManager sm, bool animate);
 
+    public virtual void OnActionPhaseChange(Cell cell, int phase) {}
+
 }

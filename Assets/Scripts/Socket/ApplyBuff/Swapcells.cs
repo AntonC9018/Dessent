@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ApplySwapcellsBuffRequest : ApplyBuffRequest
 {
-    public Vector2 coordTo;
+    public Vector2Int coordTo;
     public ApplySwapcellsBuffRequest()
     {
         headerName = HeaderName.ApplyBuff;

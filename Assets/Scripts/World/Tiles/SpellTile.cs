@@ -29,13 +29,14 @@
         {
             print("Cell not targetable");
         }
-        else if (spell.requiredNumberPhases >= stateManager.selectedAction.phase)
+        else if (spell.requiredNumberPhases == stateManager.selectedAction.phase)
         {
             spell.Request(cell, stateManager);
             stateManager.ResetSelectedAction();
         }
         else
         {
+            spell.OnActionPhaseChange(cell, stateManager.selectedAction.phase);
             stateManager.ProgressSelectedActionPhase(cell);
         }
     }

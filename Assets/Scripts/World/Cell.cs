@@ -34,11 +34,10 @@ public class Cell : MonoBehaviour
 
     // the cell should keep buffs but lose bonuses
     // i.e. the two cells should exchange bonuses
-    public void MoveTo(Vector2Int destination)
+    public void MoveTo(Vector2Int pos, Vector2 worldPos)
     {
-        gridPos = destination;
-
-        // TODO: change world position stateManager smoothly through some other logic
+        gridPos = pos;
+        gameObject.transform.localPosition = worldPos;
     }
 
 
@@ -50,8 +49,9 @@ public class Cell : MonoBehaviour
         rhs.bonuses = buffer;
 
         Vector2Int coord = lhs.gridPos;
-        lhs.MoveTo(rhs.gridPos);
-        rhs.MoveTo(coord);
+        Vector2 worldPos = lhs.gameObject.transform.localPosition;
+        lhs.MoveTo(rhs.gridPos, rhs.gameObject.transform.localPosition);
+        rhs.MoveTo(coord, worldPos);
 
         // if the cells come from different grids, attempt 
         // to convert the enemy's cell into ours

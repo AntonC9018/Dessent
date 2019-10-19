@@ -10,20 +10,25 @@ public class Swapcells : BuffSpell
 
     public override int requiredNumberPhases {
         get;
-    } = 2;
+    } = 1;
 
 
     public override void Request(Cell cell, StateManager sm)
     {
-        // just the first cell was recorded
-        // wait for the second one
-        if (sm.selectedAction.phase == 0) return;
+        var coord1 = cell.gridPos;
+        var coord2 = sm.selectedAction.cells[0].gridPos;
+        if (coord1 == coord2)
+        {
+            Debug.Log("Use must choose two distinct cells");
+            return;
+        }
 
         var req = new ApplySwapcellsBuffRequest
         {
-            coordTo = cell.gridPos,
-            coord = sm.selectedAction.cells[0].gridPos,
+            coordTo = coord1,
+            coord = coord2,
         };
+
         sm.Request(req);
     }
 
@@ -45,4 +50,6 @@ public class Swapcells : BuffSpell
         Cell cell2 = sm.privateGrid.GetCellAt(pack.coordTo);
         Cell.ExchangeCells(cell1, cell2);
     }
+
+
 }

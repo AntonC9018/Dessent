@@ -87,6 +87,17 @@ public class SinglePlayerGameManager : GameManager
                     {
 
                     }
+                    else if (req.name == SpellName.Swapcells)
+                    {
+                        var r = (ApplySwapcellsBuffRequest)req;
+                        from.ReceiveResponse(
+                            new ApplySwapcellsBuffResponse
+                            {
+                                coord = r.coord,
+                                coordTo = r.coordTo,
+                            }
+                        );
+                    }
                     break;
                 }
 

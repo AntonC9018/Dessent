@@ -6,6 +6,10 @@ public abstract class Spell
 {
     public int manacost;
     public SpellName type;
+    public virtual int requiredNumberPhases
+    {
+        get;
+    } = 1;
 
     // Apply the effect of the spell and send a response to gm
     public virtual void Apply(Cell cell, StateManager sm)

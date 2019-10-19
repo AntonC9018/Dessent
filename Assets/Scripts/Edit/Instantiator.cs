@@ -39,6 +39,8 @@ public class Instantiator : MonoBehaviour
 
     public IDictionary<BuildingName, GameObject> ghostBuildings 
         = new Dictionary<BuildingName, GameObject>();
+    public IDictionary<GroundName, GameObject> groundPrefabs
+        = new Dictionary<GroundName, GameObject>();
 
     public float offsetPercX = 0.05f;
     public float objectOffset = -0.3f;
@@ -71,6 +73,7 @@ public class Instantiator : MonoBehaviour
         var gm = gmobj.AddComponent<SinglePlayerGameManager>();
 
         InitializeGhostBuildings(gmobj);
+        InitializeGroundDictinary();
 
         for (int i = 0; i < 2; i++)
         {
@@ -318,25 +321,25 @@ public class Instantiator : MonoBehaviour
         // Void, Sea -> Grassland
         if (groundName == GroundName.Void || groundName == GroundName.Sea)
         {
-            cell.ground = InstantiateGroundOnCell(cell, earthPref);
-            cell.ground.altitude = GroundName.Grassland;
+            SpawnGroundOnCellByAltitude(cell, GroundName.Grassland);
         }
-
         // Mountain -> Sea
         else if (groundName == GroundName.Mountain)
         {
-            cell.ground = InstantiateGroundOnCell(cell, seaPref);
-            cell.ground.altitude = GroundName.Sea;
+            SpawnGroundOnCellByAltitude(cell, GroundName.Sea);
         }
-
         // Grassland -> Mountain
-        //else if (groundName == GroundName.Grassland)
         else
         {
-            cell.ground =  InstantiateGroundOnCell(cell, mountainPref);
-            cell.ground.altitude = GroundName.Mountain;
+            SpawnGroundOnCellByAltitude(cell, GroundName.Mountain);
         }
+    }
 
+    public void SpawnGroundOnCellByAltitude(Cell cell, GroundName altitude)
+    {
+        cell.ground = InstantiateGroundOnCell(cell, groundPrefabs[altitude]);
+        ResetHoverOnCell(cell);
+        cell.ground.altitude = altitude;
         // rename the object in the editor
         cell.ground.gameObject.name = cell.ground.altitude.ToString();
     }
@@ -441,6 +444,15 @@ public class Instantiator : MonoBehaviour
             ResizeObject(buil);
             buil.SetActive(false);
         }
+    }
+
+    public void InitializeGroundDictinary()
+    {
+        groundPrefabs.Clear();
+        groundPrefabs.Add(GroundName.Void, voidPref);
+        groundPrefabs.Add(GroundName.Grassland, earthPref);
+        groundPrefabs.Add(GroundName.Sea, seaPref);
+        groundPrefabs.Add(GroundName.Mountain, mountainPref);
     }
 
     public void TeleportGhostBuildingToCellByType(Cell cell, BuildingName buildingName)

@@ -47,7 +47,7 @@ public class Lightning : Spell
         var res = (ApplyLightningSpellResponse)response;
         // illuminate a cell, do not animate
         var illuminate = sm.FindSpell(SpellName.Illuminate);
-        illuminate.RealizeResponse(res, sm, false);
+        illuminate.RealizeResponse(res.illuminate, sm, false);
 
         // TODO: play animation
         if (!animate) return;

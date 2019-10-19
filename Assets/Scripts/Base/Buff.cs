@@ -6,6 +6,10 @@ public abstract class BuffSpell
 {
     public int manacost;
     public BuffSpellName type;
+    public virtual int requiredNumberPhases
+    {
+        get;
+    } = 1;
 
     public abstract void Request(Cell cell, StateManager sm);
 

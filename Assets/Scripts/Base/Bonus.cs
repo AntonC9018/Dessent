@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Bonus : MonoBehaviour
 {
 
-    public BonusName name;
+    public BonusName type;
 
     public void Start() {
 
@@ -40,7 +40,7 @@ public abstract class Bonus : MonoBehaviour
     {
         return new BonusStruct
         {
-            name = name,
+            name = type,
         };
     }
 

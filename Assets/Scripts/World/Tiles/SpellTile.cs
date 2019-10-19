@@ -5,21 +5,22 @@
 
     public override void ApplyAction(Cell cell)
     {
-        if (stateManager.mana.currentMana >= spell.manacost)
+        if (stateManager.mana.currentMana < spell.manacost)
+        {
+            print("Low Mana");
+        }
+        else if (cell.parentGrid.IsPublic())
+        {
+            print("Choose opponent's tile");
+        }
+        else if (spell.requiredNumberPhases >= stateManager.selectedAction.phase)
         {
             spell.Request(cell, stateManager);
+            stateManager.ResetSelectedAction();
         }
         else
         {
-            // TODO: Display to the user some message with an error
-            // BTW, onButtonClick is overridable too, so
-            // you could add some manarelated error checking there
-            // to not even let the user select a spell when mana is low
+            stateManager.ProgressSelectedActionPhase(cell);
         }
-    }
-
-    public override void CancelAction()
-    {
-        throw new System.NotImplementedException();
     }
 }

@@ -7,8 +7,6 @@ public class BuildingTile : SelectableActionTile
 
     public override void ApplyAction(Cell cell)
     {
-
-
         if (cell.building)
         {
             Debug.Log("Building already exists");
@@ -57,7 +55,6 @@ public class BuildingTile : SelectableActionTile
 
     public override void OnMouseButtonDownOnCell(Cell cell)
     {
-        //ghost.SetActive(false);
         ApplyAction(cell);
     }
 

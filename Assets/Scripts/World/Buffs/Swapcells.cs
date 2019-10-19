@@ -5,6 +5,9 @@ using UnityEngine;
 public class Swapcells : BuffSpell
 {
     public new int manacost = 1;
+    public override int requiredNumberPhases {
+        get;
+    } = 2;
 
     public Swapcells()
     {
@@ -16,11 +19,7 @@ public class Swapcells : BuffSpell
     {
         // just the first cell was recorded
         // wait for the second one
-        if (sm.selectedAction.phase == 0)
-        {
-            sm.selectedAction.set = false;
-            return;
-        }        
+        if (sm.selectedAction.phase == 0) return;
 
         var req = new ApplySwapcellsBuffRequest
         {

@@ -1,6 +1,10 @@
 ﻿public abstract class TwinSpell
 {
     public int manacost;
+    public virtual int requiredNumberPhases
+    {
+        get;
+    } = 1;
     // do both requests : a spell request and a buff request
     public abstract void Request(Cell cell, StateManager sm);
 }

@@ -5,9 +5,4 @@
         stateManager.Request(new EndTurnRequest());
         stateManager.ResetSelectedAction();
     }
-
-    public override void CancelAction()
-    {
-        throw new System.NotImplementedException();
-    }
 }

@@ -42,7 +42,10 @@ public abstract class SelectableActionTile : MonoBehaviour
     public virtual void OnMouseDraggedOnCell(Cell cell) {}
     public virtual void OnMouseDraggedOntoCell(Cell cell) {}
     public virtual void OnMouseDraggedOutOfCell(Cell cell) {}
-    public virtual void OnMouseButtonDownOnCell(Cell cell) {}
+    public virtual void OnMouseButtonDownOnCell(Cell cell)
+    {
+        ApplyAction(cell);
+    }
     public virtual void OnMouseButtonUpOnCell(Cell cell) {}
     public virtual void OnActionCanceled()
     {
@@ -51,7 +54,10 @@ public abstract class SelectableActionTile : MonoBehaviour
     }
 
     public virtual void ApplyAction(Cell cell) {}
-    public abstract void CancelAction();
+    public virtual void CancelAction()
+    {
+        stateManager.ResetSelectedAction();
+    }
 
 
     // Events of this

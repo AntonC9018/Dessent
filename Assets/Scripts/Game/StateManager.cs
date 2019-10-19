@@ -62,6 +62,8 @@ public class StateManager : MonoBehaviour
                     var res = (ApplySpellResponse)response;
                     var spell = FindSpell(res.name);
                     spell.RealizeResponse(res, this, true);
+                    mana.UseMana(spell.manacost);
+                    mana.UpdateMana();
                     break;
                 }
 
@@ -71,6 +73,8 @@ public class StateManager : MonoBehaviour
                     var res = (ApplyBuffResponse)response;
                     var buff = FindBuff(res.name);
                     buff.RealizeResponse(res, this, true);
+                    mana.UseMana(buff.manacost);
+                    mana.UpdateMana();
                     break;
                 }
 
@@ -146,7 +150,7 @@ public class StateManager : MonoBehaviour
 
     public void SetBuildingOnCell(Cell cell, BuildingStruct building)
     {
-        if (cell.building.type != building.type)
+        if (cell.building != null && cell.building.type != building.type)
         {
             Destroy(cell.building.gameObject);
         }
@@ -156,6 +160,13 @@ public class StateManager : MonoBehaviour
         cell.building.religion = building.religion != 0 ? building.religion : cell.building.religion;
         cell.building.activeState = building.activeState;
         cell.building.level = building.level != 0 ? building.level : cell.building.level;
+    }
+    
+
+    public void SetGroundOnCell(Cell cell, GroundName groundName)
+    {
+        Destroy(cell.ground.gameObject);
+        instantiator.SpawnGroundOnCellByAltitude(cell, groundName);
     }
 
 
@@ -347,7 +358,6 @@ public class StateManager : MonoBehaviour
         {
             Destroy(cell.ground.gameObject);
             instantiator.LoopGroundOnCellByAltitude(cell, cell.ground.altitude);
-            instantiator.ResetHoverOnCell(cell);
             cell.isChanged = true;
         }
     }
@@ -507,30 +517,33 @@ public class StateManager : MonoBehaviour
     }
 
 
-    // TODO: simplify to just returning a new instance of the Spell
     public Spell FindSpell(SpellName name)
     {
-        foreach(SpellTile tile in spellTiles) {
-            if (tile.spell.type == name)
-            {
-                return tile.spell;
-            }
+        if (spells.ContainsKey(name))
+        {
+            return spells[name];
         }
         return null;
     }
 
-    // TODO: simplify to just returning a new instance of the BuffSpell
+
     public BuffSpell FindBuff(BuffSpellName name)
     {
-        foreach (BuffSpellTile tile in buffTiles)
+        if (buffSpells.ContainsKey(name))
         {
-            if (tile.buffSpell.type == name)
-            {
-                return tile.buffSpell;
-            }
+            return buffSpells[name];
         }
         return null;
     }
+
+    //public TwinSpell FindTwinSpell(TwinSpellName name)
+    //{
+    //    if (twinSpells.ContainsKey(name))
+    //    {
+    //        return twinSpell[name];
+    //    }
+    //    return null;
+    //}
 
     public void SyncGamePhase()
     {

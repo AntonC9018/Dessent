@@ -8,11 +8,10 @@ public struct BuildingStruct
     public int hp;
     public BuildingName type;
     public int religion;
-
     // TODO: Reconsider in the future
     public bool activeState;
-
     public int level;
+    public bool exists;
 }
 
 

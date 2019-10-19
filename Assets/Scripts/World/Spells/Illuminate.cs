@@ -38,6 +38,11 @@ public class IlluminateSpell : Spell
             building.religion = cell.building.religion;
             building.activeState = cell.building.activeState;
             building.level = cell.building.level;
+            building.exists = true;
+        }
+        else
+        {
+            building.exists = false;
         }
 
         var res = new ApplyIlluminateSpellResponse
@@ -53,7 +58,6 @@ public class IlluminateSpell : Spell
 
     public override void RealizeResponse(Response response, StateManager sm, bool animate) {
 
-
         var res = (ApplyIlluminateSpellResponse)response;
         Cell cell = sm.privateGrid.GetCellAt(res.coord);
         //if (cell.building)
@@ -61,22 +65,28 @@ public class IlluminateSpell : Spell
         //    // TODO: Destroy the building as gameObject
         //    // cell.building.gameObject.Destroy();
         //}
-
-        sm.SetBuildingOnCell(cell, res.building);
+        if (res.building.exists)
+        {
+            sm.SetBuildingOnCell(cell, res.building);
+        }
+        if (res.altitude != cell.ground.altitude)
+        {
+            sm.SetGroundOnCell(cell, res.altitude);
+        }
 
         if (!animate) return;
 
         var parent = cell.gameObject;
 
-        // istantiate prefab bla bla
-        // this is temporary btw
-        var illuminate = (GameObject)Resources.Load("Prefab/Spells_anim/Illuminate");
+        //// istantiate prefab bla bla
+        //// this is temporary btw
+        //var illuminate = (GameObject)Resources.Load("Prefab/Spells_anim/Illuminate");
 
-        var animationObject = GameObject.Instantiate(
-            illuminate,
-            parent.transform.position,
-            Quaternion.identity,
-            parent.transform.parent);
+        //var animationObject = GameObject.Instantiate(
+        //    illuminate,
+        //    parent.transform.position,
+        //    Quaternion.identity,
+        //    parent.transform.parent);
     }
 
 

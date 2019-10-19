@@ -56,19 +56,26 @@ public abstract class SelectableActionTile : MonoBehaviour
 
     // Events of this
     private bool mouseOver;
+    private bool leftWasPressed = false;
 
     void Update()
     {
         if (mouseOver)
         {
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0) && leftWasPressed)
             {
                 OnMouseButtonUp();
+                leftWasPressed = false;
             }
             else if (Input.GetMouseButtonDown(0))
             {
                 OnMouseButtonDown();
+                leftWasPressed = true;
             }
+        }
+        else
+        {
+            leftWasPressed = false;
         }
     }
 

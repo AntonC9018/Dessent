@@ -40,8 +40,6 @@ public class BuildingTile : SelectableActionTile
             stateManager.Request(req);
             ghost.SetActive(false);
         }
-
-        print($"Building has level: {cell.building.level}");
     }
 
     public override void OnMouseEnterOnCell(Cell cell)

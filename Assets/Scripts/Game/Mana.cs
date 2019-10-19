@@ -104,31 +104,16 @@ public class Mana : MonoBehaviour
         {
             RecalculateMPS();
             RecalculateMaxMana();
-            print("--------------------------");
-            print($"Current mana: {currentMana}");
-            print($"MPS: {mps}");
-            print("--------------------------");
-
         }
         else if (phase == TurnPhase.Start)
         {
             RecalculateMPS();
             GatherManaFromBuildings();
-            print("--------------------------");
-            print($"Max mana: {maxMana}");
-            print($"Current mana: {currentMana}");
-            print($"MPS: {mps}");
-            print("--------------------------");
-
         }
         else if (phase == TurnPhase.End)
         {
             RecalculateMaxMana();
             LimitMana();
-            print("--------------------------");
-            print($"Max mana: {maxMana}");
-            print("--------------------------");
-
         }
     }
 }

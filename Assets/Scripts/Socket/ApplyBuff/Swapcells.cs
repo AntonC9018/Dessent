@@ -7,7 +7,7 @@ public class ApplySwapcellsBuffRequest : ApplyBuffRequest
     public ApplySwapcellsBuffRequest()
     {
         headerName = HeaderName.ApplyBuff;
-        name = BuffSpellName.Swapcells;
+        name = SpellName.Swapcells;
     }
 }
 
@@ -18,7 +18,7 @@ public class ApplySwapcellsBuffResponse : ApplyBuffResponse
     public ApplySwapcellsBuffResponse()
     {
         headerName = HeaderName.ApplyBuff;
-        name = BuffSpellName.Swapcells;
+        name = SpellName.Swapcells;
     }
 }
 
@@ -33,6 +33,6 @@ public class ApplySwapcellsBuffPacket : ApplyBuffPacket
     public ApplySwapcellsBuffPacket()
     {
         headerName = HeaderName.ApplyBuff;
-        name = BuffSpellName.Swapcells;
+        name = SpellName.Swapcells;
     }
 }

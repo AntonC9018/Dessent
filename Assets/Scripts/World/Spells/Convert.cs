@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Convert : Spell
 {
-    public new int manacost = 3;
 
-    public Convert()
-    {
-        type = SpellName.Convert;
-    }
+    public override int manacost { get; set; } = 3;
+    public override SpellName spellName { get; } = SpellName.Convert;
 
 
     public override void Request(Cell cell, StateManager sm)
@@ -51,7 +48,7 @@ public class Convert : Spell
 
         if (cell.building)
         {
-            var illuminate = sm.FindSpell(SpellName.Illuminate);
+            var illuminate = (Spell)sm.FindSpell(SpellName.Illuminate);
             var illum = illuminate.ApplyEffect(cell, sm);
             res.illuminate = (ApplyIlluminateSpellResponse)illum;
         }

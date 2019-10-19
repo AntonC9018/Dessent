@@ -45,7 +45,8 @@ public class SinglePlayerGameManager : GameManager
                     Cell cell = opponent.publicGrid.GetCellAt(req.coord);
                     if (cell != null)
                     {
-                        opponent.FindSpell(req.name).Apply(cell, opponent);
+                        ((Spell)opponent.FindSpell(req.name))
+                            .Apply(cell, opponent);
                     }
                     break;
                 }
@@ -60,7 +61,7 @@ public class SinglePlayerGameManager : GameManager
                         // if not, don't do anything
                     
                     // send a response to from
-                    if (req.name == BuffSpellName.Illuminate)
+                    if (req.name == SpellName.Illuminate)
                     {
                         // generate a response with the necessary data
                         var res = new ApplyIlluminateBuffResponse
@@ -74,15 +75,15 @@ public class SinglePlayerGameManager : GameManager
                     }
 
                     // TODO: Implement this logic
-                    else if (req.name == BuffSpellName.Purge)
+                    else if (req.name == SpellName.Purge)
                     {
 
                     }
-                    else if (req.name == BuffSpellName.Shield)
+                    else if (req.name == SpellName.Shield)
                     {
 
                     }
-                    else if (req.name == BuffSpellName.Zealots)
+                    else if (req.name == SpellName.Zealots)
                     {
 
                     }

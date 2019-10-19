@@ -5,12 +5,9 @@ using UnityEngine;
 // not to be confused with IlluminateBuff!!
 public class IlluminateSpell : Spell
 {
-    public new int manacost = 0;
+    public override int manacost { get; set; } = 0;
+    public override SpellName spellName { get; } = SpellName.Illuminate;
 
-    public IlluminateSpell()
-    {
-        type = SpellName.Illuminate;
-    }
 
     // send a request to the opponent's or not grid
     public override void Request(Cell cell, StateManager sm)

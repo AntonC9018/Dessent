@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ApplyBuffRequest : Request
 {
-    public BuffSpellName name;
+    public SpellName name;
     public Vector2Int coord;
 
     public ApplyBuffRequest()
@@ -16,7 +16,7 @@ public class ApplyBuffRequest : Request
 public class ApplyBuffResponse : Response
 {
     public Ack ack;
-    public BuffSpellName name;
+    public SpellName name;
     public Vector2Int coord;
 
     public ApplyBuffResponse()
@@ -29,7 +29,7 @@ public class ApplyBuffResponse : Response
 
 public class ApplyBuffPacket : Packet
 {
-    public BuffSpellName name;
+    public SpellName name;
     public Vector2Int coord;
 
     public ApplyBuffPacket()

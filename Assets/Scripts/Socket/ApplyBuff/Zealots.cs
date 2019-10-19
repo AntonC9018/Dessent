@@ -5,7 +5,7 @@ public class ApplyZealotsBuffRequest : ApplyBuffRequest
     public ApplyZealotsBuffRequest()
     {
         headerName = HeaderName.ApplyBuff;
-        name = BuffSpellName.Zealots;
+        name = SpellName.Zealots;
     }
 }
 
@@ -15,7 +15,7 @@ public class ApplyZealotsBuffResponse : ApplyBuffResponse
     public ApplyZealotsBuffResponse()
     {
         headerName = HeaderName.ApplyBuff;
-        name = BuffSpellName.Zealots;
+        name = SpellName.Zealots;
     }
 }
 
@@ -26,6 +26,6 @@ public class ApplyZealotsBuffPacket : ApplyBuffPacket
     public ApplyZealotsBuffPacket()
     {
         headerName = HeaderName.ApplyBuff;
-        name = BuffSpellName.Zealots;
+        name = SpellName.Zealots;
     }
 }

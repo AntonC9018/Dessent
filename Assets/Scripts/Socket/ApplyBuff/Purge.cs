@@ -8,7 +8,7 @@ public class ApplyPurgeBuffResponse : ApplyBuffResponse
     public ApplyPurgeBuffResponse()
     {
         headerName = HeaderName.ApplyBuff;
-        name = BuffSpellName.Purge;
+        name = SpellName.Purge;
     }
 }
 
@@ -18,7 +18,7 @@ public class ApplyPurgeBuffRequest : ApplyBuffRequest
     public ApplyPurgeBuffRequest()
     {
         headerName = HeaderName.ApplyBuff;
-        name = BuffSpellName.Purge;
+        name = SpellName.Purge;
     }
 }
 
@@ -32,7 +32,7 @@ public class ApplyPurgeBuffPacket : ApplyBuffPacket
     public ApplyPurgeBuffPacket()
     {
         headerName = HeaderName.ApplyBuff;
-        name = BuffSpellName.Purge;
+        name = SpellName.Purge;
 
     }
 }

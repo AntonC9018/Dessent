@@ -1,6 +1,22 @@
 ﻿public class SpellTile : SelectableActionTile
 {
-    public Spell spell;
+    public SpellBase spell;
+
+    private bool IsCellTargetable(Cell cell)
+    {
+        if (spell.spellType == SpellType.TwinSpell) return true;
+
+        bool isPublic = cell.parentGrid.IsPublic();
+        if (spell.spellType == SpellType.Spell)
+        {
+            return isPublic;
+        }
+        if (spell.spellType == SpellType.BuffSpell)
+        {
+            return !isPublic;
+        }
+        return false;
+    }
 
 
     public override void ApplyAction(Cell cell)
@@ -9,9 +25,9 @@
         {
             print("Low Mana");
         }
-        else if (cell.parentGrid.IsPublic())
+        else if (IsCellTargetable(cell))
         {
-            print("Choose opponent's tile");
+            print("Cell not targetable");
         }
         else if (spell.requiredNumberPhases >= stateManager.selectedAction.phase)
         {

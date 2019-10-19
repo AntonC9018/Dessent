@@ -5,7 +5,7 @@ public class ApplyIlluminateBuffRequest : ApplyBuffRequest
     public ApplyIlluminateBuffRequest()
     {
         headerName = HeaderName.ApplyBuff;
-        name = BuffSpellName.Illuminate;
+        name = SpellName.Illuminate;
     }
 }
 
@@ -17,6 +17,6 @@ public class ApplyIlluminateBuffResponse : ApplyBuffResponse
     public ApplyIlluminateBuffResponse()
     {
         headerName = HeaderName.ApplyBuff;
-        name = BuffSpellName.Illuminate;
+        name = SpellName.Illuminate;
     }
 }

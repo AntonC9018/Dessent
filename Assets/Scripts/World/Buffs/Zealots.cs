@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Zealots : BuffSpell
 {
-    public new int manacost = 3;
 
-    public Zealots()
-    {
-        type = BuffSpellName.Zealots;
-    }
+    public override int manacost { get; set; } = 2;
+    public override SpellName spellName { get; } = SpellName.Zealots;
 
 
     public override void Request(Cell cell, StateManager sm)

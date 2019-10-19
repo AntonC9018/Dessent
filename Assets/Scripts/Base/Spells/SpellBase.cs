@@ -1,25 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public abstract class Spell
+﻿public abstract class SpellBase
 {
-    public int manacost;
-    public SpellName type;
+    public abstract SpellName spellName
+    {
+        get;
+    }
+
+    public abstract int manacost {
+        get; set;
+    }
+
     public virtual int requiredNumberPhases
     {
         get;
     } = 1;
 
-    // Apply the effect of the spell and send a response to gm
-    public virtual void Apply(Cell cell, StateManager sm)
+    public abstract SpellType spellType
     {
-        sm.Respond(ApplyEffect(cell, sm));
+        get;
     }
-
-    // Apply the effects of the spell on a given cell, without 
-    // reporting the response to gm
-    public abstract Response ApplyEffect(Cell cell, StateManager sm);
 
     // Construct and make a request to gm 
     // This function is put in ApplyActionStruct inside gm
@@ -31,4 +29,3 @@ public abstract class Spell
     public abstract void RealizeResponse(Response response, StateManager sm, bool animate);
 
 }
-

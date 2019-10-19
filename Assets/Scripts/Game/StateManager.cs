@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,16 +12,13 @@ public class StateManager : MonoBehaviour
     public PrivateGrid privateGrid;
 
     public List<SpellTile> spellTiles = new List<SpellTile>();
-    public List<BuffSpellTile> buffTiles = new List<BuffSpellTile>();
     public NextTurnTile nextTurnTile;
     public List<BuildingTile> buildingTiles = new List<BuildingTile>();
 
     public IDictionary<BuildingName, int> buildingCount
         = new Dictionary<BuildingName, int>();
-    public IDictionary<SpellName, Spell> spells
-        = new Dictionary<SpellName, Spell>();
-    public IDictionary<BuffSpellName, BuffSpell> buffSpells
-        = new Dictionary<BuffSpellName, BuffSpell>();
+    public IDictionary<SpellName, SpellBase> spells
+        = new Dictionary<SpellName, SpellBase>();
 
     public GameManager gameManager;
     public Mana mana;
@@ -71,7 +67,7 @@ public class StateManager : MonoBehaviour
             case HeaderName.ApplyBuff:
                 {
                     var res = (ApplyBuffResponse)response;
-                    var buff = FindBuff(res.name);
+                    var buff = FindSpell(res.name);
                     buff.RealizeResponse(res, this, true);
                     mana.UseMana(buff.manacost);
                     mana.UpdateMana();
@@ -517,21 +513,11 @@ public class StateManager : MonoBehaviour
     }
 
 
-    public Spell FindSpell(SpellName name)
+    public SpellBase FindSpell(SpellName name)
     {
         if (spells.ContainsKey(name))
         {
             return spells[name];
-        }
-        return null;
-    }
-
-
-    public BuffSpell FindBuff(BuffSpellName name)
-    {
-        if (buffSpells.ContainsKey(name))
-        {
-            return buffSpells[name];
         }
         return null;
     }

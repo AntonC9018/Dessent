@@ -142,14 +142,7 @@ public class Instantiator : MonoBehaviour
             {
                 sm.spellTiles.Add(spellTile);
                 spellTile.stateManager = sm;
-                sm.spells.Add(spellTile.spell.type, spellTile.spell);
-            }
-
-            foreach (var buffSpellTile in grid.ui.GetComponentsInChildren<BuffSpellTile>())
-            {
-                sm.buffTiles.Add(buffSpellTile);
-                buffSpellTile.stateManager = sm;
-                sm.buffSpells.Add(buffSpellTile.buffSpell.type, buffSpellTile.buffSpell);
+                sm.spells.Add(spellTile.spell.spellName, spellTile.spell);
             }
 
             foreach (var buildingTile in grid.ui.GetComponentsInChildren<BuildingTile>())
@@ -573,9 +566,9 @@ public class Instantiator : MonoBehaviour
         var tile = InstantiateAndSetParentAndWrap(obj, cell);
 
         // Make the tile a BuffSpellTile
-        tile.AddComponent<BuffSpellTile>()
+        tile.AddComponent<SpellTile>()
             // + add the BuffSpell on it
-            .buffSpell = new T();
+            .spell = new T();
 
         // return the container object
         return tile;

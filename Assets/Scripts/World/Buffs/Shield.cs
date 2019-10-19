@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Shield : BuffSpell
 {
-    public new int manacost = 3;
 
-    public Shield()
-    {
-        type = BuffSpellName.Shield;
-    }
+    public override int manacost { get; set; } = 3;
+    public override SpellName spellName { get; } = SpellName.Shield;
 
 
     public override void Request(Cell cell, StateManager sm)

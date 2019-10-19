@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Firestorm : Spell
 {
-    public new int manacost = 4;
+
+    public override int manacost { get; set; } = 4;
+    public override SpellName spellName { get; } = SpellName.Firestorm;
+
     public int damage = 2;
 
-    public Firestorm()
-    {
-        type = SpellName.Firestorm;
-    }
 
 
     public override void Request(Cell cell, StateManager sm)
@@ -39,12 +38,12 @@ public class Firestorm : Spell
 
         var resp = new ApplyFirestormSpellResponse
         {
-            name = type,
+            name = spellName,
             coord = cell.gridPos,
             ack = cell.building != null ? Ack.Success : Ack.Failure
         };
 
-        var illuminate = sm.FindSpell(SpellName.Illuminate);
+        var illuminate = (Spell)sm.FindSpell(SpellName.Illuminate);
         var illuminates = new List<ApplyIlluminateSpellResponse>();
 
         // Illuminate target tile

@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Swapcells : BuffSpell
 {
-    public new int manacost = 1;
+
+    public override int manacost { get; set; } = 1;
+    public override SpellName spellName { get; } = SpellName.Swapcells;
+
     public override int requiredNumberPhases {
         get;
     } = 2;
-
-    public Swapcells()
-    {
-        type = BuffSpellName.Swapcells;
-    }
 
 
     public override void Request(Cell cell, StateManager sm)

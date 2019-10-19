@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Lightning : Spell
 {
-    public new int manacost = 4;
-    public int damage = 1;
+    public override int manacost { get; set; } = 4;
+    public override SpellName spellName { get; } = SpellName.Lightning;
 
-    public Lightning()
-    {
-        type = SpellName.Lightning;
-    }
+    public int damage = 1;    
 
 
     public override void Request(Cell cell, StateManager sm)
@@ -34,10 +31,10 @@ public class Lightning : Spell
         {
             cell.building.TakeHit(new DamageSource(damage));
         }
-        var illuminate = sm.FindSpell(SpellName.Illuminate);
+        var illuminate = (Spell)sm.FindSpell(SpellName.Illuminate);
         var resp = new ApplyLightningSpellResponse
         {
-            name = type,
+            name = spellName,
             coord = cell.gridPos,
             ack = cell.building ? Ack.Success : Ack.Failure,
             illuminate = (ApplyIlluminateSpellResponse)illuminate.ApplyEffect(cell, sm),

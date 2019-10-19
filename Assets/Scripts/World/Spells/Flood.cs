@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class Flood : Spell
 {
-    public new int manacost = 2;
-    //public int damage = 2;
-    public int deactivationLength = 1;
 
-    public Flood()
-    {
-        type = SpellName.Flood;
-    }
+    public override int manacost { get; set; } = 2;
+    public override SpellName spellName { get; } = SpellName.Flood;
+
+    public int deactivationLength = 1;
 
 
     public override void Request(Cell cell, StateManager sm)
@@ -38,7 +35,7 @@ public class Flood : Spell
         }
 
         // illuminate the cell
-        var illum = sm.FindSpell(SpellName.Illuminate);
+        var illum = (Spell)sm.FindSpell(SpellName.Illuminate);
 
         var resp = new ApplyFloodSpellResponse
         {

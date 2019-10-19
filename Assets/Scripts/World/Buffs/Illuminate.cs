@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class IlluminateBuff : BuffSpell
 {
-    public new int manacost = 0;
+    public override int manacost { get; set; } = 0;
+    public override SpellName spellName { get; } = SpellName.Illuminate;
 
-    public IlluminateBuff()
-    {
-        type = BuffSpellName.Illuminate;
-    }
 
     // send a request to the opponent's or not grid
     public override void Request(Cell cell, StateManager sm)
@@ -33,6 +30,5 @@ public class IlluminateBuff : BuffSpell
         {
             // TODO: discover bonuses
         }
-    } 
-
+    }
 }

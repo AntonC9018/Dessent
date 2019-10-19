@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class Purge : BuffSpell
 {
-    public new int manacost = 3;
-
-    public Purge()
-    {
-        type = BuffSpellName.Purge;
-    }
+    public override int manacost { get; set; } = 2;
+    public override SpellName spellName { get; } = SpellName.Purge;
 
 
     public override void Request(Cell cell, StateManager sm)

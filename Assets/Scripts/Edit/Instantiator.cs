@@ -338,8 +338,9 @@ public class Instantiator : MonoBehaviour
     public void SpawnGroundOnCellByAltitude(Cell cell, GroundName altitude)
     {
         cell.ground = InstantiateGroundOnCell(cell, groundPrefabs[altitude]);
-        ResetHoverOnCell(cell);
         cell.ground.altitude = altitude;
+        ResetHoverOnCell(cell);
+
         // rename the object in the editor
         cell.ground.gameObject.name = cell.ground.altitude.ToString();
     }
@@ -426,7 +427,7 @@ public class Instantiator : MonoBehaviour
     {
         var colliderTest = cell.GetComponent<ColliderTest>();
         colliderTest.chang = cell.ground.GetComponent<SpriteRenderer>();
-        colliderTest.AutoHover();
+        if (cell.mouseOver) colliderTest.AutoHover();
     }
 
     // Instantiate and resize ghost prefs

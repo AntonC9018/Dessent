@@ -96,9 +96,7 @@ public class Cell : MonoBehaviour
 
     public List<Cell> GetAdjacent()
     {
-
         List<Cell> result = new List<Cell>();
-
 
         Vector2Int[] xys = {
             new Vector2Int(-1, -2),
@@ -109,14 +107,12 @@ public class Cell : MonoBehaviour
             new Vector2Int( 1,  2),
         }; 
 
-        foreach(Vector2 xy in xys)
+        foreach(var xy in xys)
         {
-            foreach(Cell cell in parentGrid.cells)
+            var cell = parentGrid.GetCellAt(gridPos + xy);
+            if (cell != null)
             {
-                if ((xy + gridPos).Equals(cell.gridPos))
-                {
-                    result.Add(cell);
-                }
+                result.Add(cell);
             }
         }
 
@@ -124,7 +120,7 @@ public class Cell : MonoBehaviour
     }
 
 
-    private bool mouseOver = false;
+    public bool mouseOver = false;
 
     void Update()
     {

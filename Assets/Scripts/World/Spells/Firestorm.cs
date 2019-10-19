@@ -32,7 +32,7 @@ public class Firestorm : Spell
     public override Response ApplyEffect(Cell cell, StateManager sm)
     {
         // damage the building
-        if (cell.building)
+        if (cell.building != null)
         {
             cell.building.TakeHit(new DamageSource(damage));
         }
@@ -41,7 +41,7 @@ public class Firestorm : Spell
         {
             name = type,
             coord = cell.gridPos,
-            ack = cell.building ? Ack.Success : Ack.Failure
+            ack = cell.building != null ? Ack.Success : Ack.Failure
         };
 
         var illuminate = sm.FindSpell(SpellName.Illuminate);

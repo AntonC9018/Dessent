@@ -24,11 +24,17 @@ public class IlluminateBuff : BuffSpell
         Cell cell = sm.publicGrid.GetCellAt(res.coord);
 
         int diffCount = res.bonuses.Count - cell.bonuses.Count;
-        cell.bonuses = res.bonuses;
+        
+        // TODO: refactor, enhance
+        foreach (var bonus in res.bonuses)
+        {
+            sm.instantiator.InstantiateBonusOnCell(cell);
+        }
 
         if (diffCount > 0)
         {
             // TODO: discover bonuses
+            Debug.Log("There are bonuses");
         }
     }
 }

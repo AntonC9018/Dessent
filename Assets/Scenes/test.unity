@@ -220,6 +220,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &9004084
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +322,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &11715047
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +424,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &20774715
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +526,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &21531937
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,6 +721,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &24420523
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,6 +823,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &34564709
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +925,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &35331067
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,15 +970,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &35331070
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1388,6 +1394,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &49111769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,6 +1573,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &53199244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,6 +1768,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &53986742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,6 +1870,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &59192569
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,15 +2274,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &66702343
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2459,15 +2468,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &71532677
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2776,6 +2784,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &87857450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2876,6 +2885,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &94059111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2971,6 +2981,8 @@ MonoBehaviour:
   hotspot: {x: 0, y: 0}
   cursorMode: 0
   actionPrefab: {fileID: 0}
+  mouseOver: 0
+  leftWasPressed: 0
 --- !u!1 &104335110
 GameObject:
   m_ObjectHideFlags: 0
@@ -3262,6 +3274,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &119875369
 GameObject:
   m_ObjectHideFlags: 0
@@ -3440,6 +3453,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &132485676
 GameObject:
   m_ObjectHideFlags: 0
@@ -3620,6 +3634,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &143100743
 GameObject:
   m_ObjectHideFlags: 0
@@ -3720,6 +3735,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &143855332
 GameObject:
   m_ObjectHideFlags: 0
@@ -3914,6 +3930,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &144778800
 GameObject:
   m_ObjectHideFlags: 0
@@ -4137,11 +4154,6 @@ MonoBehaviour:
   - {fileID: 393468237}
   - {fileID: 1937953383}
   - {fileID: 1897681300}
-  buffTiles:
-  - {fileID: 940030032}
-  - {fileID: 889595293}
-  - {fileID: 1651077428}
-  - {fileID: 94059115}
   nextTurnTile: {fileID: 0}
   buildingTiles:
   - {fileID: 772340173}
@@ -4152,6 +4164,7 @@ MonoBehaviour:
   mana: {fileID: 0}
   whichPlayer: 0
   turn: 0
+  turnPhase: 0
   phase: 1
   instantiator: {fileID: 460917435}
 --- !u!4 &162666898
@@ -4802,15 +4815,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &203448295
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4961,6 +4973,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &209636069
 GameObject:
   m_ObjectHideFlags: 0
@@ -5062,6 +5075,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &211514617
 GameObject:
   m_ObjectHideFlags: 0
@@ -5242,6 +5256,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &222672480
 GameObject:
   m_ObjectHideFlags: 0
@@ -5343,6 +5358,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &224387177
 GameObject:
   m_ObjectHideFlags: 0
@@ -5537,6 +5553,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &227959262
 GameObject:
   m_ObjectHideFlags: 0
@@ -5638,6 +5655,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &228796315
 GameObject:
   m_ObjectHideFlags: 0
@@ -5962,15 +5980,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &237656885
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6050,16 +6067,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2e9b40fe0beaad4db0ffa62686a158c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
-  adjacentCells: []
+  stateManager: {fileID: 0}
   vecOrder:
   - {x: 2, y: 0}
   - {x: 1, y: 1}
@@ -6176,15 +6191,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &245767151
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6586,6 +6600,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &264769505
 GameObject:
   m_ObjectHideFlags: 0
@@ -6686,6 +6701,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &271554249
 GameObject:
   m_ObjectHideFlags: 0
@@ -6823,15 +6839,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &272819243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7004,15 +7019,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &277810686
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7292,15 +7306,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &286989716
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7450,6 +7463,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &289056748
 GameObject:
   m_ObjectHideFlags: 0
@@ -7587,15 +7601,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &289761672
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7875,15 +7888,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &302346775
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8219,6 +8231,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &331243481
 GameObject:
   m_ObjectHideFlags: 0
@@ -8412,6 +8425,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &337826119
 GameObject:
   m_ObjectHideFlags: 0
@@ -8456,15 +8470,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &337826122
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8708,6 +8721,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &343427805
 GameObject:
   m_ObjectHideFlags: 0
@@ -9379,16 +9393,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2e9b40fe0beaad4db0ffa62686a158c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
-  adjacentCells: []
+  stateManager: {fileID: 0}
   vecOrder:
   - {x: 2, y: 0}
   - {x: 1, y: 1}
@@ -9562,6 +9574,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &370081039
 GameObject:
   m_ObjectHideFlags: 0
@@ -9662,6 +9675,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &379577866
 GameObject:
   m_ObjectHideFlags: 0
@@ -9706,15 +9720,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &379577869
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9942,6 +9955,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &384190854
 GameObject:
   m_ObjectHideFlags: 0
@@ -10399,6 +10413,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &393468233
 GameObject:
   m_ObjectHideFlags: 0
@@ -10523,7 +10538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d434249ada4c04589539c8c3d4ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activePlayer: 0
   stateManagers:
   - {fileID: 162666897}
   - {fileID: 874610337}
@@ -11020,6 +11034,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &427204545
 GameObject:
   m_ObjectHideFlags: 0
@@ -11064,15 +11079,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &427204548
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11223,6 +11237,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &438849746
 GameObject:
   m_ObjectHideFlags: 0
@@ -11417,6 +11432,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &445772899
 GameObject:
   m_ObjectHideFlags: 0
@@ -11609,6 +11625,8 @@ MonoBehaviour:
   hotspot: {x: 0, y: 0}
   cursorMode: 0
   actionPrefab: {fileID: 0}
+  mouseOver: 0
+  leftWasPressed: 0
 --- !u!1 &450822864
 GameObject:
   m_ObjectHideFlags: 0
@@ -11710,6 +11728,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &457038676
 GameObject:
   m_ObjectHideFlags: 0
@@ -11831,15 +11850,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &457718693
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11955,14 +11973,14 @@ MonoBehaviour:
     type: 3}
   ghostBeaconPref: {fileID: 3872297984331100352, guid: f0f4083899063404090e04c27d2b25f6,
     type: 3}
-  ghostBuildings:
-  - {fileID: 920233917}
-  - {fileID: 1937097356}
-  - {fileID: 1850164018}
-  - {fileID: 1477787600}
   offsetPercX: 0.05
   objectOffset: 0.3
   sizeScale: 2.5
+  BonusTestBig: {fileID: 1318030606532276176, guid: f059ff97d18daa144b5ef201e368a176,
+    type: 3}
+  BonusTestSmall: {fileID: 891884691034705738, guid: e5eece2ad6434174f8f24a47372fe80e,
+    type: 3}
+  BonusTestBigToggle: {fileID: 0}
 --- !u!1 &462174570
 GameObject:
   m_ObjectHideFlags: 0
@@ -12249,6 +12267,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &472422867
 GameObject:
   m_ObjectHideFlags: 0
@@ -12350,6 +12369,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &479261030
 GameObject:
   m_ObjectHideFlags: 0
@@ -13076,6 +13096,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &513915651
 GameObject:
   m_ObjectHideFlags: 0
@@ -13176,6 +13197,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &516199638
 GameObject:
   m_ObjectHideFlags: 0
@@ -13370,6 +13392,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &526345151
 GameObject:
   m_ObjectHideFlags: 0
@@ -13414,15 +13437,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &526345154
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13516,15 +13538,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &535866245
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13618,15 +13639,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &542551627
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13777,6 +13797,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &550312808
 GameObject:
   m_ObjectHideFlags: 0
@@ -13821,15 +13842,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &550312811
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14109,15 +14129,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &556541066
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14211,15 +14230,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &556681938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14370,6 +14388,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &566937068
 GameObject:
   m_ObjectHideFlags: 0
@@ -14470,6 +14489,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &567431013
 GameObject:
   m_ObjectHideFlags: 0
@@ -14855,6 +14875,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &602965743
 GameObject:
   m_ObjectHideFlags: 0
@@ -14955,6 +14976,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &615342558
 GameObject:
   m_ObjectHideFlags: 0
@@ -14999,15 +15021,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &615342561
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15181,15 +15202,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &625303473
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15283,15 +15303,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &629316937
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15757,15 +15776,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &647672829
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15859,15 +15877,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &653402882
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15961,15 +15978,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &654556500
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16063,15 +16079,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &660172485
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16221,6 +16236,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &672491859
 GameObject:
   m_ObjectHideFlags: 0
@@ -16322,6 +16338,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &674822595
 GameObject:
   m_ObjectHideFlags: 0
@@ -16366,15 +16383,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &674822598
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16618,6 +16634,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &685491737
 GameObject:
   m_ObjectHideFlags: 0
@@ -16795,6 +16812,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &696515010
 GameObject:
   m_ObjectHideFlags: 0
@@ -16989,6 +17007,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &710350598
 GameObject:
   m_ObjectHideFlags: 0
@@ -17113,15 +17132,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &711488892
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17308,15 +17326,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &718254781
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17461,6 +17478,8 @@ MonoBehaviour:
   hotspot: {x: 0, y: 0}
   cursorMode: 0
   actionPrefab: {fileID: 0}
+  mouseOver: 0
+  leftWasPressed: 0
 --- !u!1 &725134852
 GameObject:
   m_ObjectHideFlags: 0
@@ -17505,15 +17524,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &725134855
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17664,6 +17682,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &734483902
 GameObject:
   m_ObjectHideFlags: 0
@@ -17708,15 +17727,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &734483905
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17810,15 +17828,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &736836530
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17969,6 +17986,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &740034988
 GameObject:
   m_ObjectHideFlags: 0
@@ -18013,15 +18031,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &740034991
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18172,6 +18189,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &741094913
 GameObject:
   m_ObjectHideFlags: 0
@@ -18365,6 +18383,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &757649297
 GameObject:
   m_ObjectHideFlags: 0
@@ -18466,6 +18485,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &758628710
 GameObject:
   m_ObjectHideFlags: 0
@@ -18603,15 +18623,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &761456088
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18705,15 +18724,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &761891173
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18958,6 +18976,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &769898274
 GameObject:
   m_ObjectHideFlags: 0
@@ -19151,6 +19170,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &772340169
 GameObject:
   m_ObjectHideFlags: 0
@@ -19520,6 +19540,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &784025033
 GameObject:
   m_ObjectHideFlags: 0
@@ -19750,15 +19771,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &794476670
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19852,15 +19872,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &798677859
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20010,6 +20029,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &814785587
 GameObject:
   m_ObjectHideFlags: 0
@@ -20322,15 +20342,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &828387935
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21002,6 +21021,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &849255026
 GameObject:
   m_ObjectHideFlags: 0
@@ -21102,6 +21122,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &855445955
 GameObject:
   m_ObjectHideFlags: 0
@@ -21239,15 +21260,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &856863437
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21398,6 +21418,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &868027310
 GameObject:
   m_ObjectHideFlags: 0
@@ -21498,6 +21519,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &868648823
 GameObject:
   m_ObjectHideFlags: 0
@@ -21542,15 +21564,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &868648826
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21637,11 +21658,6 @@ MonoBehaviour:
   - {fileID: 778996762}
   - {fileID: 1232117312}
   - {fileID: 568688745}
-  buffTiles:
-  - {fileID: 447744919}
-  - {fileID: 1764038107}
-  - {fileID: 724934129}
-  - {fileID: 1675133136}
   nextTurnTile: {fileID: 0}
   buildingTiles:
   - {fileID: 1634326431}
@@ -21652,6 +21668,7 @@ MonoBehaviour:
   mana: {fileID: 0}
   whichPlayer: 1
   turn: 0
+  turnPhase: 0
   phase: 1
   instantiator: {fileID: 460917435}
 --- !u!4 &874610338
@@ -21772,6 +21789,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &880754943
 GameObject:
   m_ObjectHideFlags: 0
@@ -21965,6 +21983,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &882770236
 GameObject:
   m_ObjectHideFlags: 0
@@ -22066,6 +22085,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &889481368
 GameObject:
   m_ObjectHideFlags: 0
@@ -22254,6 +22274,8 @@ MonoBehaviour:
   hotspot: {x: 0, y: 0}
   cursorMode: 0
   actionPrefab: {fileID: 0}
+  mouseOver: 0
+  leftWasPressed: 0
 --- !u!1 &892844163
 GameObject:
   m_ObjectHideFlags: 0
@@ -22447,6 +22469,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &898155466
 GameObject:
   m_ObjectHideFlags: 0
@@ -22584,15 +22607,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &898980403
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22743,6 +22765,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &905821850
 GameObject:
   m_ObjectHideFlags: 0
@@ -22787,15 +22810,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &905821853
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22889,15 +22911,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &908510645
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23220,6 +23241,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &933704212
 GameObject:
   m_ObjectHideFlags: 0
@@ -23414,6 +23436,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &940028951
 GameObject:
   m_ObjectHideFlags: 0
@@ -23515,6 +23538,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &940030028
 GameObject:
   m_ObjectHideFlags: 0
@@ -23610,6 +23634,8 @@ MonoBehaviour:
   hotspot: {x: 0, y: 0}
   cursorMode: 0
   actionPrefab: {fileID: 0}
+  mouseOver: 0
+  leftWasPressed: 0
 --- !u!1 &951313693
 GameObject:
   m_ObjectHideFlags: 0
@@ -23711,6 +23737,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &957182235
 GameObject:
   m_ObjectHideFlags: 0
@@ -23755,15 +23782,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &957182238
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23914,6 +23940,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &966339822
 GameObject:
   m_ObjectHideFlags: 0
@@ -24210,15 +24237,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &981430005
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24369,6 +24395,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &985770448
 GameObject:
   m_ObjectHideFlags: 0
@@ -24413,15 +24440,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &985770451
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24572,6 +24598,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &996389865
 GameObject:
   m_ObjectHideFlags: 0
@@ -24709,15 +24736,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &997539960
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24867,6 +24893,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1001879821
 GameObject:
   m_ObjectHideFlags: 0
@@ -25138,6 +25165,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1009846921
 GameObject:
   m_ObjectHideFlags: 0
@@ -25239,6 +25267,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1010113047
 GameObject:
   m_ObjectHideFlags: 0
@@ -25525,6 +25554,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1019907694
 GameObject:
   m_ObjectHideFlags: 0
@@ -25626,6 +25656,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1022427270
 GameObject:
   m_ObjectHideFlags: 0
@@ -25892,15 +25923,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1043346633
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25994,15 +26024,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1051291094
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26153,6 +26182,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1059034434
 GameObject:
   m_ObjectHideFlags: 0
@@ -26253,6 +26283,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1060910012
 GameObject:
   m_ObjectHideFlags: 0
@@ -26447,6 +26478,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1066810428
 GameObject:
   m_ObjectHideFlags: 0
@@ -26547,6 +26579,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1072527701
 GameObject:
   m_ObjectHideFlags: 0
@@ -26684,15 +26717,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1078565064
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26921,6 +26953,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1100527161
 GameObject:
   m_ObjectHideFlags: 0
@@ -26965,15 +26998,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1100527164
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27123,6 +27155,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1117311969
 GameObject:
   m_ObjectHideFlags: 0
@@ -27224,6 +27257,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1118072309
 GameObject:
   m_ObjectHideFlags: 0
@@ -27268,15 +27302,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1118072312
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27427,6 +27460,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1123175278
 GameObject:
   m_ObjectHideFlags: 0
@@ -28047,6 +28081,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1185603410
 GameObject:
   m_ObjectHideFlags: 0
@@ -28241,6 +28276,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1193481226
 GameObject:
   m_ObjectHideFlags: 0
@@ -28341,6 +28377,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1219384407
 GameObject:
   m_ObjectHideFlags: 0
@@ -28385,15 +28422,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1219384410
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28544,6 +28580,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1223473316
 GameObject:
   m_ObjectHideFlags: 0
@@ -28588,15 +28625,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1223473319
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28971,15 +29007,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1235240202
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29246,15 +29281,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1251748377
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29482,6 +29516,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1269955164
 GameObject:
   m_ObjectHideFlags: 0
@@ -29686,15 +29721,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1282999598
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29881,15 +29915,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1286121682
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29983,15 +30016,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1288033554
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30085,15 +30117,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1289969703
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30337,6 +30368,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1292496915
 GameObject:
   m_ObjectHideFlags: 0
@@ -30541,15 +30573,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1305392843
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30700,6 +30731,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1322448562
 GameObject:
   m_ObjectHideFlags: 0
@@ -30744,15 +30776,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1322448565
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30995,6 +31026,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1340491672
 GameObject:
   m_ObjectHideFlags: 0
@@ -31096,6 +31128,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1356596908
 GameObject:
   m_ObjectHideFlags: 0
@@ -31463,6 +31496,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1369850461
 GameObject:
   m_ObjectHideFlags: 0
@@ -31643,6 +31677,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1399546276
 GameObject:
   m_ObjectHideFlags: 0
@@ -31823,6 +31858,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1405136515
 GameObject:
   m_ObjectHideFlags: 0
@@ -32026,15 +32062,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1417563946
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32208,15 +32243,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1420591948
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32483,15 +32517,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1425365432
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32641,6 +32674,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1439039814
 GameObject:
   m_ObjectHideFlags: 0
@@ -32742,6 +32776,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1441236274
 GameObject:
   m_ObjectHideFlags: 0
@@ -32786,15 +32821,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1441236277
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33118,6 +33152,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1465765580
 GameObject:
   m_ObjectHideFlags: 0
@@ -33751,6 +33786,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1493144195
 GameObject:
   m_ObjectHideFlags: 0
@@ -34104,6 +34140,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1507193988
 GameObject:
   m_ObjectHideFlags: 0
@@ -34297,6 +34334,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1541365966
 GameObject:
   m_ObjectHideFlags: 0
@@ -34397,6 +34435,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1553782318
 GameObject:
   m_ObjectHideFlags: 0
@@ -34617,15 +34656,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1562218535
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34776,6 +34814,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1570754422
 GameObject:
   m_ObjectHideFlags: 0
@@ -34992,15 +35031,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1575248358
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35151,6 +35189,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1584978234
 GameObject:
   m_ObjectHideFlags: 0
@@ -35251,6 +35290,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1596758289
 GameObject:
   m_ObjectHideFlags: 0
@@ -35390,15 +35430,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1598521485
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35492,15 +35531,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1600193684
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35594,15 +35632,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1601314645
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35753,6 +35790,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1605790745
 GameObject:
   m_ObjectHideFlags: 0
@@ -35854,6 +35892,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1614204361
 GameObject:
   m_ObjectHideFlags: 0
@@ -36035,6 +36074,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1619064329
 GameObject:
   m_ObjectHideFlags: 0
@@ -36079,15 +36119,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1619064332
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36238,6 +36277,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1624945229
 GameObject:
   m_ObjectHideFlags: 0
@@ -36282,15 +36322,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1624945232
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36817,6 +36856,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1640996894
 GameObject:
   m_ObjectHideFlags: 0
@@ -36917,6 +36957,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1641430477
 GameObject:
   m_ObjectHideFlags: 0
@@ -37147,15 +37188,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1644819289
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37342,15 +37382,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1647855164
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37500,6 +37539,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1651077424
 GameObject:
   m_ObjectHideFlags: 0
@@ -37595,6 +37635,8 @@ MonoBehaviour:
   hotspot: {x: 0, y: 0}
   cursorMode: 0
   actionPrefab: {fileID: 0}
+  mouseOver: 0
+  leftWasPressed: 0
 --- !u!1 &1657194543
 GameObject:
   m_ObjectHideFlags: 0
@@ -37639,15 +37681,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1657194546
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37741,15 +37782,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1658545438
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37900,6 +37940,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1667390659
 GameObject:
   m_ObjectHideFlags: 0
@@ -38088,6 +38129,8 @@ MonoBehaviour:
   hotspot: {x: 0, y: 0}
   cursorMode: 0
   actionPrefab: {fileID: 0}
+  mouseOver: 0
+  leftWasPressed: 0
 --- !u!1 &1678681340
 GameObject:
   m_ObjectHideFlags: 0
@@ -38132,15 +38175,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1678681343
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38327,15 +38369,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1690507539
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38485,6 +38526,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1699601031
 GameObject:
   m_ObjectHideFlags: 0
@@ -38771,6 +38813,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1713914993
 GameObject:
   m_ObjectHideFlags: 0
@@ -38936,15 +38979,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1716669285
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39175,6 +39217,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1727638621
 GameObject:
   m_ObjectHideFlags: 0
@@ -39405,15 +39448,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1731933823
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39563,6 +39605,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1738399942
 GameObject:
   m_ObjectHideFlags: 0
@@ -39958,6 +40001,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1759436809
 GameObject:
   m_ObjectHideFlags: 0
@@ -40139,6 +40183,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1763202937
 GameObject:
   m_ObjectHideFlags: 0
@@ -40327,6 +40372,8 @@ MonoBehaviour:
   hotspot: {x: 0, y: 0}
   cursorMode: 0
   actionPrefab: {fileID: 0}
+  mouseOver: 0
+  leftWasPressed: 0
 --- !u!1 &1780020691
 GameObject:
   m_ObjectHideFlags: 0
@@ -40618,6 +40665,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1788545949
 GameObject:
   m_ObjectHideFlags: 0
@@ -40812,6 +40860,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1803381947
 GameObject:
   m_ObjectHideFlags: 0
@@ -41086,6 +41135,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1819955308
 GameObject:
   m_ObjectHideFlags: 0
@@ -41187,6 +41237,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1831350614
 GameObject:
   m_ObjectHideFlags: 0
@@ -41324,15 +41375,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1832475692
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -41426,15 +41476,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1837885359
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -41528,15 +41577,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1844593647
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -41953,6 +42001,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1863231797
 GameObject:
   m_ObjectHideFlags: 0
@@ -42054,6 +42103,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1873765986
 GameObject:
   m_ObjectHideFlags: 0
@@ -42363,15 +42413,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1884825931
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42615,6 +42664,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1891214663
 GameObject:
   m_ObjectHideFlags: 0
@@ -42940,15 +42990,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1908894898
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -43135,15 +43184,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1911932140
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -43237,15 +43285,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1914970525
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -43661,6 +43708,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1923937764
 GameObject:
   m_ObjectHideFlags: 0
@@ -43932,6 +43980,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1937097356
 GameObject:
   m_ObjectHideFlags: 0
@@ -44208,6 +44257,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1945956235
 GameObject:
   m_ObjectHideFlags: 0
@@ -44252,15 +44302,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1945956238
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44597,6 +44646,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1953028641
 GameObject:
   m_ObjectHideFlags: 0
@@ -44884,6 +44934,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &1971484362
 GameObject:
   m_ObjectHideFlags: 0
@@ -44928,15 +44979,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &1971484365
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45409,15 +45459,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &2006345974
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45511,15 +45560,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &2006397443
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45613,15 +45661,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &2014051207
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45715,15 +45762,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &2014103167
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -46153,6 +46199,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &2035180215
 GameObject:
   m_ObjectHideFlags: 0
@@ -46197,15 +46244,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae6781d48ae7534b956dd3491dfa26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &2035180218
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -46634,6 +46680,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &2060501517
 GameObject:
   m_ObjectHideFlags: 0
@@ -46678,15 +46725,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &2060501520
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -46836,6 +46882,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &2063919251
 GameObject:
   m_ObjectHideFlags: 0
@@ -46937,6 +46984,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &2067114554
 GameObject:
   m_ObjectHideFlags: 0
@@ -47061,15 +47109,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &2069951194
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47163,15 +47210,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &2086656234
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47321,6 +47367,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &2089174367
 GameObject:
   m_ObjectHideFlags: 0
@@ -47365,15 +47412,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc7112cd0a912a40acbe35ade742a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &2089174370
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47687,6 +47733,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &2115860516
 GameObject:
   m_ObjectHideFlags: 0
@@ -47973,6 +48020,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &2120723045
 GameObject:
   m_ObjectHideFlags: 0
@@ -48017,15 +48065,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ab8f9ef32cab4b98486f69deda834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   hp: 1
   lastDamage: 0
   religion: 4
   owner: 1
-  activeState: 1
   level: 1
-  allowedGroundType: 0
+  activeState: 1
   parentCell: {fileID: 0}
+  stateManager: {fileID: 0}
 --- !u!212 &2120723048
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -48176,6 +48223,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &2131856428
 GameObject:
   m_ObjectHideFlags: 0
@@ -48556,6 +48604,7 @@ MonoBehaviour:
   popups: []
   isChanged: 0
   illuminated: 0
+  mouseOver: 0
 --- !u!1 &2146741052
 GameObject:
   m_ObjectHideFlags: 0

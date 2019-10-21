@@ -47,6 +47,9 @@ public class Instantiator : MonoBehaviour
     public float sizeScale;
     //public float objectShrinkageFactor = 0.8f;
 
+    public GameObject BonusTestBig, BonusTestSmall;
+    public GameObject BonusTestBigToggle;
+
     public struct GridStruct
     {
         public List<GameObject> tiles;
@@ -155,6 +158,8 @@ public class Instantiator : MonoBehaviour
             }
 
             grid.ui.GetComponentInChildren<NextTurnTile>().stateManager = sm;
+            var button = SpawnTest1(sm.gameObject);
+            button.stateManager = sm;
 
         }
     }
@@ -174,7 +179,8 @@ public class Instantiator : MonoBehaviour
 
     private GridStruct CreateAGrid(GameObject holder)
     {
-        
+
+
         // Set up the LEFT BOARD
         var left = new GameObject();
         left.transform.SetParent(holder.transform);
@@ -200,25 +206,26 @@ public class Instantiator : MonoBehaviour
 
         var tiles = new List<GameObject>();
 
-        tiles.Add( Red <Firestorm>      (fireStormPref) );
-        tiles.Add( Red <IlluminateSpell>(illuminatePref));
-        tiles.Add( Red <Convert>        (convertPref)   );
-        tiles.Add( Red <Flood>          (floodPref)     );
-        tiles.Add( Blue<Zealots>        (zealotsPref)   );
-        tiles.Add( Red <Lightning>      (lightningPref) );
-        tiles.Add( Blue<Purge>          (purgePref)     );
-        tiles.Add( Blue<Swapcells>      (swapCellsPref) );
-        tiles.Add( Blue<Shield>         (shieldPref)    );
-        tiles.Add( ManaTile()                           );
-        tiles.Add( Gold()                               );
-        tiles.Add( _NextTurnTile()                      );
-        tiles.Add( Gold()                               );
-        tiles.Add( Gold()                               );
-        tiles.Add( Gold()                               );
-        tiles.Add( Gold<Hut>      (hutPref)             );
-        tiles.Add( Gold<Stable>   (stablePref)          );
-        tiles.Add( Gold<Monastery>(monasteryPref)       );
-        tiles.Add( Gold<Beacon>   (beaconPref)          );
+        tiles.Add( Red <Firestorm>(fireStormPref) );
+        // TODO: Add green TwinSpell tiles
+        tiles.Add( Red <IlluminateTwinSpell>(illuminatePref));
+        tiles.Add( Red <Convert>  (convertPref)   );
+        tiles.Add( Red <Flood>    (floodPref)     );
+        tiles.Add( Blue<Zealots>  (zealotsPref)   );
+        tiles.Add( Red <Lightning>(lightningPref) );
+        tiles.Add( Blue<Purge>    (purgePref)     );
+        tiles.Add( Blue<Swapcells>(swapCellsPref) );
+        tiles.Add( Blue<Shield>   (shieldPref)    );
+        tiles.Add( ManaTile()                     );
+        tiles.Add( Gold()                         );
+        tiles.Add( _NextTurnTile()                );
+        tiles.Add( Gold()                         );
+        tiles.Add( Gold()                         );
+        tiles.Add( Gold()                         );
+        tiles.Add( Gold<Hut>      (hutPref)       );
+        tiles.Add( Gold<Stable>   (stablePref)    );
+        tiles.Add( Gold<Monastery>(monasteryPref) );
+        tiles.Add( Gold<Beacon>   (beaconPref)    );
 
         PopulateUI(ui, tiles);
 
@@ -543,7 +550,7 @@ public class Instantiator : MonoBehaviour
     // the elements they create, they just set them up.
     // Repositioning is done in PopulateUI()
     private GameObject Red<T>(GameObject obj) 
-        where T : Spell, new()
+        where T : SpellBase, new()
     {
         // Tile (SpellTile) {  RedCell (basically an image)  }
         var cell = Instantiate(redPref);
@@ -651,5 +658,28 @@ public class Instantiator : MonoBehaviour
             new Vector2(-0.907f,  0.465f),
             new Vector2( 0.034f,  1.013f),
         });
+    }
+
+
+    private BonusTest SpawnTest1(GameObject holder)
+    {
+        var button = Instantiate(BonusTestBig);
+        var script = button.AddComponent<BonusTest>();
+        button.transform.SetParent(holder.transform, false);
+        return script;
+    }
+
+    public void InstantiateBonusOnCell(Cell cell)
+    {
+        var poly = Instantiate(BonusTestSmall);
+        var bonus = poly.AddComponent<Bonus>();
+        poly.transform.SetParent(cell.transform, false);
+        poly.transform.localPosition = new Vector3(
+            poly.transform.localPosition.x,
+            poly.transform.localPosition.y,
+            -5
+        );
+        cell.bonuses.Add(bonus);
+
     }
 }

@@ -7,7 +7,7 @@ public class BuildingTile : SelectableActionTile
 
     public override void ApplyAction(Cell cell)
     {
-        if (cell.building)
+        if (cell.building != null)
         {
             Debug.Log("Building already exists");
             // Building already exists

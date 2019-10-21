@@ -82,6 +82,14 @@ public class StateManager : MonoBehaviour
                     Cell cell = publicGrid.GetCellAt(res.coord);
                     // Instantiate building with script
                     instantiator.SpawnBuildingOnCellByType(cell, res.type);
+                    // Get Illuminate
+                    var illumRes = res.illuminate;
+                    // Apply illuminate
+                    if (illumRes != null)
+                    {
+                        var illum = (TwinSpell)FindSpell(SpellName.Illuminate);
+                        illum.RealizeResponse(illumRes, this, true);
+                    }
                     // Spend mana
                     mana.UseMana(cell.building.GetBuildManaCost());
                     // Update mana stats like mps and max mana

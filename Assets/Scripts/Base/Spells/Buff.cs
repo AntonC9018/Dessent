@@ -14,7 +14,7 @@ public abstract class BuffSpell : SpellBase
 
 
 // this is the buff's effect
-public abstract class Buff
+public class Buff
 {
-
+    public GameObject buffIcon;
 }

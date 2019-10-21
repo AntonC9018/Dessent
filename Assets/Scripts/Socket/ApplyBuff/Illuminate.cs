@@ -12,7 +12,7 @@ public class ApplyIlluminateBuffRequest : ApplyBuffRequest
 
 public class ApplyIlluminateBuffResponse : ApplyBuffResponse
 {
-    public List<Bonus> bonuses;
+    public List<BonusStruct> bonuses;
 
     public ApplyIlluminateBuffResponse()
     {

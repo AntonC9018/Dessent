@@ -2,23 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Bonus : MonoBehaviour
+public class Bonus : MonoBehaviour
 {
 
     public BonusName type;
-
-    public void Start() {
-
-    }
 
     // should respond to the event of being touched
     // must call selfDestruct
     public virtual void OnTouch(
         // some means of game state
-    ) { 
+    ) {
         // grant some bonus to the cell or to the player
         // selfDestruct()
+        print("Touched bonus");
     }
+
     public void SelfDestruct()
     {
         // delete itself from bonus array

@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 public class Cell : MonoBehaviour
 {
 
-    public List<Bonus> bonuses;
+    public List<Bonus> bonuses = new List<Bonus>();
     public List<Buff> buffs;
     public Ground ground;
     public Building building;

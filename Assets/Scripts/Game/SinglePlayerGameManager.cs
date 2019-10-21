@@ -67,7 +67,8 @@ public class SinglePlayerGameManager : GameManager
                         var res = new ApplyIlluminateBuffResponse
                         {
                             // respond with the list of bonuses that the tile has
-                            bonuses = cell.bonuses,
+                            bonuses = Bonus.ConvertToStructs(cell.bonuses),
+                            coord = req.coord,
                         };
 
                         // respond to the request
@@ -110,11 +111,18 @@ public class SinglePlayerGameManager : GameManager
                     // NOTE: for the server-ful multiplayer implementation
                     // this should include error checking (validation) at server
                     var req = (ConstructBuildingRequest)request;
+                    Cell cell = opponent.privateGrid.GetCellAt(req.coord);
 
                     var res = new ConstructBuildingResponse
                     {
                         coord = req.coord,
                         type = req.type,
+                        illuminate = new ApplyIlluminateBuffResponse
+                        {
+                            // respond with the list of bonuses that the tile has
+                            bonuses = Bonus.ConvertToStructs(cell.bonuses),
+                            coord = req.coord,
+                        }
                     };
 
                     from.ReceiveResponse(res);

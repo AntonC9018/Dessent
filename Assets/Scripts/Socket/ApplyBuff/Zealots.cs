@@ -12,6 +12,7 @@ public class ApplyZealotsBuffRequest : ApplyBuffRequest
 
 public class ApplyZealotsBuffResponse : ApplyBuffResponse
 {
+    public int religionLevel;
     public ApplyZealotsBuffResponse()
     {
         headerName = HeaderName.ApplyBuff;

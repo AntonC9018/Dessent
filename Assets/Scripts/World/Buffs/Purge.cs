@@ -32,14 +32,30 @@ public class Purge : BuffSpell
         var pack = (ApplyPurgeBuffPacket)packet;
         Cell cell = sm.privateGrid.GetCellAt(pack.coord);
         // make sure the building is there
-        if (cell.building)
+        // TODO: refactor
+        if (cell.building != null)
         {
             cell.building.religion = pack.religionLevel;
         }
-        if (pack.lostControl)
+        if (pack.lostControl || pack.religionLevel == -1)
         {
             cell.Convert();
         }
+    }
+
+    public override ApplyBuffResponse GenerateResponse
+        (ApplyBuffRequest req, StateManager from, StateManager opponent)
+    {
+        var cell = from.publicGrid.GetCellAt(req.coord);
+
+        // This spell cannot cause a cell to change its owner
+        // because if can only be applied on a cell you control
+        return new ApplyPurgeBuffResponse
+        {
+            coord = req.coord,
+            religionLevel = cell.building.religion,
+            ack = Ack.Success,
+        };
     }
 }
 

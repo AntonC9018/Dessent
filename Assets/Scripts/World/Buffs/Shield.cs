@@ -27,6 +27,22 @@ public class Shield : BuffSpell
     }
 
     // There is no packet, because this buff is hidden
+    public override ApplyBuffPacket GeneratePacket
+        (ApplyBuffRequest req, StateManager from, StateManager opponent)
+    {
+        return null;
+    }
+
+
+    public override ApplyBuffResponse GenerateResponse
+        (ApplyBuffRequest req, StateManager from, StateManager opponent)
+    {
+        return new ApplyShieldBuffResponse
+        {
+            ack = Ack.Success,
+            coord = req.coord,
+        };
+    }
 }
 
 

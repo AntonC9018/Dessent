@@ -54,51 +54,26 @@ public class SinglePlayerGameManager : GameManager
             case HeaderName.ApplyBuff:
                 {
                     var req = (ApplyBuffRequest)request;
-                    Cell cell = opponent.publicGrid.GetCellAt(req.coord);
 
-                    // check if opponent has vision there
-                        // if true, send him a packet
-                        // if not, don't do anything
-                    
-                    // send a response to from
-                    if (req.name == SpellName.Illuminate)
+                    var spell = from.FindSpell(req.name);
+                    BuffSpell buffSpell = spell is TwinSpell ? 
+                        ((TwinSpell)spell).buffSpell : 
+                        (BuffSpell)spell;
+
+                    var response = buffSpell.GenerateResponse(req, from, opponent);
+
+                    if (response != null)
                     {
-                        // generate a response with the necessary data
-                        var res = new ApplyIlluminateBuffResponse
-                        {
-                            // respond with the list of bonuses that the tile has
-                            bonuses = Bonus.ConvertToStructs(cell.bonuses),
-                            coord = req.coord,
-                        };
-
-                        // respond to the request
-                        from.ReceiveResponse(res);
+                        from.ReceiveResponse(response);
                     }
 
-                    // TODO: Implement this logic
-                    else if (req.name == SpellName.Purge)
-                    {
+                    var packet = buffSpell.GeneratePacket(req, from, opponent);
 
-                    }
-                    else if (req.name == SpellName.Shield)
+                    if (packet != null)
                     {
+                        opponent.ReceivePacket(packet);
+                    }
 
-                    }
-                    else if (req.name == SpellName.Zealots)
-                    {
-
-                    }
-                    else if (req.name == SpellName.Swapcells)
-                    {
-                        var r = (ApplySwapcellsBuffRequest)req;
-                        from.ReceiveResponse(
-                            new ApplySwapcellsBuffResponse
-                            {
-                                coord = r.coord,
-                                coordTo = r.coordTo,
-                            }
-                        );
-                    }
                     break;
                 }
 

@@ -52,4 +52,29 @@ public class Swapcells : BuffSpell
     }
 
 
+    public override ApplyBuffResponse GenerateResponse
+        (ApplyBuffRequest req, StateManager from, StateManager opponent)
+    {
+        var r = (ApplySwapcellsBuffRequest)req;
+
+        return new ApplySwapcellsBuffResponse
+        {
+            coord = r.coord,
+            coordTo = r.coordTo,
+        };
+    }
+
+
+    public override ApplyBuffPacket GeneratePacket(ApplyBuffRequest req, StateManager from, StateManager opponent)
+    {
+        var request = (ApplySwapcellsBuffRequest)req;
+
+        return new ApplySwapcellsBuffPacket
+        {
+            coord = request.coord,
+            coordTo = request.coordTo,
+        };
+    }
+
+
 }

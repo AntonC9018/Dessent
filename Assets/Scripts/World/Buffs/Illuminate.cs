@@ -37,4 +37,26 @@ public class IlluminateBuff : BuffSpell
             Debug.Log("There are bonuses");
         }
     }
+
+    public override ApplyBuffResponse GenerateResponse
+        (ApplyBuffRequest req, StateManager from, StateManager opponent)
+    {
+        var cell = opponent.privateGrid.GetCellAt(req.coord);
+
+        // generate a response with the necessary data
+        var res = new ApplyIlluminateBuffResponse
+        {
+            // respond with the list of bonuses that the tile has
+            bonuses = Bonus.ConvertToStructs(cell.bonuses),
+            coord = req.coord,
+        };
+
+        return res;
+    }
+
+    public override ApplyBuffPacket GeneratePacket
+        (ApplyBuffRequest req, StateManager from, StateManager opponent)
+    {
+        return null;
+    }
 }

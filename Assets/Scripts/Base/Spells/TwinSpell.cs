@@ -14,6 +14,15 @@ public abstract class TwinSpell : SpellBase
 
     public override void RealizeResponse
         (Response response, StateManager sm, bool animate)
-    {}
+    {
+        if (response is ApplySpellResponse)
+        {
+            spell.RealizeResponse(response, sm, animate);
+        }
+        else
+        {
+            buffSpell.RealizeResponse(response, sm, animate);
+        }
+    }
 }
 

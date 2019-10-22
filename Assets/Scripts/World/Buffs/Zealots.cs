@@ -36,6 +36,38 @@ public class Zealots : BuffSpell
         illuminate.RealizeResponse(pack.illuminate, sm, false);
         // TODO: start some animation
     }
+
+
+    public override ApplyBuffResponse GenerateResponse
+        (ApplyBuffRequest req, StateManager from, StateManager opponent)
+    {
+        var cell = from.publicGrid.GetCellAt(req.coord);
+        int religionLevel = cell.building.religion - 1;
+        Ack ack;
+
+        // opponent gained control
+        if (religionLevel == 0)
+        {
+            // By this time the packet has been sent, so ignore
+            ack = Ack.Failure;
+        }
+        // opponent gets vision
+        else if (religionLevel == 1)
+        {
+            ack = Ack.Warning;
+        }
+        else
+        {
+            ack = Ack.Success;
+        }
+
+        return new ApplyZealotsBuffResponse
+        {
+            coord = req.coord,
+            religionLevel = religionLevel,
+            ack = ack,
+        };
+    }
 }
 
 

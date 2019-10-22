@@ -5,6 +5,7 @@ public class IlluminateTwinSpell : TwinSpell
     public override SpellName spellName { get; } = SpellName.Illuminate;
     public override Spell spell { get; } = new IlluminateSpell();
     public override BuffSpell buffSpell { get; } = new IlluminateBuff();
+
     public override void Request(Cell cell, StateManager sm)
     {
         // TODO: add more complex logic to when both cells
@@ -23,17 +24,5 @@ public class IlluminateTwinSpell : TwinSpell
         }
         spell.Request(privateCell, sm);
         buffSpell.Request(publicCell, sm);
-    }
-
-    public override void RealizeResponse(Response response, StateManager sm, bool animate)
-    {
-        if (response is ApplyIlluminateSpellResponse)
-        {
-            spell.RealizeResponse(response, sm, animate);
-        }
-        else
-        {
-            buffSpell.RealizeResponse(response, sm, animate);
-        }
     }
 }

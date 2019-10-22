@@ -37,3 +37,9 @@ public class ApplyBuffPacket : Packet
         headerName = HeaderName.ApplyBuff;
     }
 }
+
+
+public class ApplyBuffVisionPacket : ApplyBuffPacket
+{
+    public ApplyIlluminateSpellResponse illuminate;
+}

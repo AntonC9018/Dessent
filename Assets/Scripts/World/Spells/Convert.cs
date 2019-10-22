@@ -48,8 +48,7 @@ public class Convert : Spell
 
         if (cell.building)
         {
-            var illuminate = (Spell)sm.FindSpell(SpellName.Illuminate);
-            var illum = illuminate.ApplyEffect(cell, sm);
+            var illum = sm.GetIlluminateSpell().ApplyEffect(cell, sm);
             res.illuminate = (ApplyIlluminateSpellResponse)illum;
         }
 
@@ -61,7 +60,7 @@ public class Convert : Spell
         var res = (ApplyConvertSpellResponse)response;
         if (res.illuminate != null)
         {
-            var illuminate = sm.FindSpell(SpellName.Illuminate);
+            var illuminate = sm.GetIlluminateSpell();
             illuminate.RealizeResponse(res.illuminate, sm, false);
 
             // TODO: play some success animation

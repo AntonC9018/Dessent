@@ -45,8 +45,15 @@ public class SinglePlayerGameManager : GameManager
                     Cell cell = opponent.publicGrid.GetCellAt(req.coord);
                     if (cell != null)
                     {
-                        ((Spell)opponent.FindSpell(req.name))
-                            .Apply(cell, opponent);
+                        SpellBase spell = opponent.FindSpell(req.name);
+                        if (spell is TwinSpell)
+                        {
+                            ((TwinSpell)spell).spell.Apply(cell, opponent);
+                        }
+                        else
+                        {
+                            ((Spell)spell).Apply(cell, opponent);
+                        }
                     }
                     break;
                 }
@@ -55,10 +62,16 @@ public class SinglePlayerGameManager : GameManager
                 {
                     var req = (ApplyBuffRequest)request;
 
-                    var spell = from.FindSpell(req.name);
-                    BuffSpell buffSpell = spell is TwinSpell ? 
-                        ((TwinSpell)spell).buffSpell : 
-                        (BuffSpell)spell;
+                    BuffSpell buffSpell;
+                    SpellBase spell = opponent.FindSpell(req.name);
+                    if (spell is TwinSpell)
+                    {
+                        buffSpell = ((TwinSpell)spell).buffSpell;
+                    }
+                    else
+                    {
+                        buffSpell = (BuffSpell)spell;
+                    }
 
                     var response = buffSpell.GenerateResponse(req, from, opponent);
 

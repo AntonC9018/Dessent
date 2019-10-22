@@ -12,7 +12,7 @@
     public virtual int requiredNumberPhases
     {
         get;
-    } = 1;
+    } = 0;
 
     public abstract SpellType spellType
     {

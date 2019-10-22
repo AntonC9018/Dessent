@@ -31,13 +31,13 @@ public class Lightning : Spell
         {
             cell.building.TakeHit(new DamageSource(damage));
         }
-        var illuminate = (Spell)sm.FindSpell(SpellName.Illuminate);
+        var illumSpell = sm.GetIlluminateSpell();
         var resp = new ApplyLightningSpellResponse
         {
             name = spellName,
             coord = cell.gridPos,
             ack = cell.building ? Ack.Success : Ack.Failure,
-            illuminate = (ApplyIlluminateSpellResponse)illuminate.ApplyEffect(cell, sm),
+            illuminate = (ApplyIlluminateSpellResponse)illumSpell.ApplyEffect(cell, sm),
         };
         return resp;
     }
@@ -46,7 +46,7 @@ public class Lightning : Spell
     {
         var res = (ApplyLightningSpellResponse)response;
         // illuminate a cell, do not animate
-        var illuminate = sm.FindSpell(SpellName.Illuminate);
+        var illuminate = sm.GetIlluminateSpell();
         illuminate.RealizeResponse(res.illuminate, sm, false);
 
         // TODO: play animation

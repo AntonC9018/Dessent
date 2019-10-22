@@ -87,7 +87,7 @@ public class StateManager : MonoBehaviour
                     // Apply illuminate
                     if (illumRes != null)
                     {
-                        var illum = (TwinSpell)FindSpell(SpellName.Illuminate);
+                        var illum = GetIlluminateBuffSpell();
                         illum.RealizeResponse(illumRes, this, true);
                     }
                     // Spend mana
@@ -528,6 +528,22 @@ public class StateManager : MonoBehaviour
             return spells[name];
         }
         return null;
+    }
+
+    public IlluminateTwinSpell GetIlluminateTwinSpell()
+    {
+        return (IlluminateTwinSpell)FindSpell(SpellName.Illuminate);
+    }
+
+    public IlluminateSpell GetIlluminateSpell()
+    {
+        return (IlluminateSpell)GetIlluminateTwinSpell().spell;
+    }
+
+
+    public IlluminateBuff GetIlluminateBuffSpell()
+    {
+        return (IlluminateBuff)GetIlluminateTwinSpell().buffSpell;
     }
 
     //public TwinSpell FindTwinSpell(TwinSpellName name)

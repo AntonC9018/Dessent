@@ -43,17 +43,17 @@ public class Firestorm : Spell
             ack = cell.building != null ? Ack.Success : Ack.Failure
         };
 
-        var illuminate = (Spell)sm.FindSpell(SpellName.Illuminate);
+        var illumSpell = sm.GetIlluminateSpell();
         var illuminates = new List<ApplyIlluminateSpellResponse>();
 
         // Illuminate target tile
-        illuminates.Add((ApplyIlluminateSpellResponse)illuminate.ApplyEffect(cell, sm));
+        illuminates.Add((ApplyIlluminateSpellResponse)illumSpell.ApplyEffect(cell, sm));
 
         // Illuminate adjacent tiles
         var cells = cell.GetAdjacent();
         foreach (Cell c in cells)
         {
-            illuminates.Add((ApplyIlluminateSpellResponse)illuminate.ApplyEffect(c, sm));
+            illuminates.Add((ApplyIlluminateSpellResponse)illumSpell.ApplyEffect(c, sm));
         }
 
         resp.illuminates = illuminates;
@@ -65,7 +65,7 @@ public class Firestorm : Spell
     public override void RealizeResponse(Response response, StateManager sm, bool animate)
     {
         var res = (ApplyFirestormSpellResponse)response;
-        var illuminate = sm.FindSpell(SpellName.Illuminate);
+        var illuminate = sm.GetIlluminateSpell();
 
         foreach (var illum in res.illuminates)
         {

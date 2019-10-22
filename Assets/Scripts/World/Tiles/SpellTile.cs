@@ -9,11 +9,11 @@
         bool isPublic = cell.parentGrid.IsPublic();
         if (spell.spellType == SpellType.Spell)
         {
-            return isPublic;
+            return !isPublic;
         }
         if (spell.spellType == SpellType.BuffSpell)
         {
-            return !isPublic;
+            return isPublic;
         }
         return false;
     }
@@ -25,7 +25,7 @@
         {
             print("Low Mana");
         }
-        else if (IsCellTargetable(cell))
+        else if (!IsCellTargetable(cell))
         {
             print("Cell not targetable");
         }

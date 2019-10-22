@@ -32,7 +32,7 @@ public class Zealots : BuffSpell
     public override void RealizePacket(Packet packet, StateManager sm)
     {
         var pack = (ApplyZealotsBuffPacket)packet;
-        var illuminate = sm.FindSpell(SpellName.Illuminate);
+        var illuminate = sm.GetIlluminateSpell();
         illuminate.RealizeResponse(pack.illuminate, sm, false);
         // TODO: start some animation
     }

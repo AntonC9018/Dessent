@@ -35,13 +35,13 @@ public class Flood : Spell
         }
 
         // illuminate the cell
-        var illum = (Spell)sm.FindSpell(SpellName.Illuminate);
+        var illumSpell = sm.GetIlluminateSpell();
 
         var resp = new ApplyFloodSpellResponse
         {
             coord = cell.gridPos,
             ack = cell.building ? Ack.Success : Ack.Failure,
-            illuminate = (ApplyIlluminateSpellResponse)illum.ApplyEffect(cell, sm),
+            illuminate = (ApplyIlluminateSpellResponse)illumSpell.ApplyEffect(cell, sm),
         };
 
         return resp;
